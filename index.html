@@ -499,7 +499,7 @@
         if (result.ok && result.data && result.data.ok) {
           accessForm.reset();
           accessForm.style.display = 'none';
-          accessMsg.textContent = 'Richiesta inviata! Controlla la tua email: ti abbiamo mandato una conferma, e ti scriviamo presto con le istruzioni.';
+          accessMsg.innerHTML = 'Richiesta inviata correttamente!<br>Ti contatteremo a breve con le istruzioni per scaricare l\'App e procedere alla registrazione.';
           accessMsg.className = 'form-msg ok';
           accessMsg.style.display = 'block';
         } else {
