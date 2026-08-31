@@ -86,6 +86,10 @@
   .field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--gold); outline-offset:1px}
   .field.full{margin-bottom:14px}
   .field textarea{resize:vertical; min-height:88px}
+  .field-hint{display:block; font-size:12px; color:var(--muted); margin-top:5px}
+  .field-err{display:none; font-size:12.5px; color:#ff8080; margin-top:5px}
+  .field-err.show{display:block}
+  .field input.invalid, .field select.invalid{border-color:#ff8080}
   .honeypot{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
   .form-msg{margin-top:14px; font-size:13.5px}
   .form-msg.ok{color:var(--gold)}
@@ -334,20 +338,25 @@
           <div class="field">
             <label for="f-nome">Nome</label>
             <input id="f-nome" name="nome" type="text" required autocomplete="given-name">
+            <span class="field-err" id="err-nome"></span>
           </div>
           <div class="field">
             <label for="f-cognome">Cognome</label>
             <input id="f-cognome" name="cognome" type="text" required autocomplete="family-name">
+            <span class="field-err" id="err-cognome"></span>
           </div>
         </div>
         <div class="form-row">
           <div class="field">
             <label for="f-email">Email</label>
             <input id="f-email" name="email" type="email" required autocomplete="email">
+            <span class="field-err" id="err-email"></span>
           </div>
           <div class="field">
             <label for="f-telefono">Telefono</label>
-            <input id="f-telefono" name="telefono" type="tel" required autocomplete="tel">
+            <input id="f-telefono" name="telefono" type="tel" required autocomplete="tel" placeholder="+39 333 1234567">
+            <span class="field-hint">Con prefisso internazionale, es. +39</span>
+            <span class="field-err" id="err-telefono"></span>
           </div>
         </div>
         <div class="field full">
@@ -405,6 +414,45 @@
   var accessMsg = document.getElementById('access-msg');
   var accessSubmit = document.getElementById('access-submit');
 
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Prefisso internazionale obbligatorio (+ seguito da cifre, spazi ammessi), lunghezza plausibile.
+  var TEL_RE = /^\+[0-9][0-9\s]{6,16}$/;
+
+  function setFieldError(id, msg){
+    var input = document.getElementById('f-' + id);
+    var err = document.getElementById('err-' + id);
+    if (msg) {
+      input.classList.add('invalid');
+      err.textContent = msg;
+      err.classList.add('show');
+    } else {
+      input.classList.remove('invalid');
+      err.textContent = '';
+      err.classList.remove('show');
+    }
+  }
+
+  // Pulisce l'errore del campo appena l'utente ricomincia a correggerlo.
+  ['nome', 'cognome', 'email', 'telefono'].forEach(function(id){
+    document.getElementById('f-' + id).addEventListener('input', function(){ setFieldError(id, ''); });
+  });
+
+  // Ritorna il primo campo non valido (o null se tutto ok), impostando i messaggi sotto ai campi.
+  function validaCampi(payload){
+    setFieldError('nome', payload.nome ? '' : 'Inserisci il tuo nome.');
+    setFieldError('cognome', payload.cognome ? '' : 'Inserisci il tuo cognome.');
+    setFieldError('email', !payload.email ? 'Inserisci la tua email.' : (!EMAIL_RE.test(payload.email) ? 'Email non valida (es. nome@dominio.it).' : ''));
+    setFieldError('telefono', !payload.telefono ? 'Inserisci il tuo numero.' : (!TEL_RE.test(payload.telefono) ? 'Numero non valido: usa il prefisso internazionale, es. +39 333 1234567.' : ''));
+
+    var ordine = ['nome', 'cognome', 'email', 'telefono'];
+    for (var i = 0; i < ordine.length; i++) {
+      if (document.getElementById('err-' + ordine[i]).classList.contains('show')) {
+        return document.getElementById('f-' + ordine[i]);
+      }
+    }
+    return null;
+  }
+
   accessForm.addEventListener('submit', function(e){
     e.preventDefault();
     accessMsg.textContent = '';
@@ -420,8 +468,10 @@
       sito_web: document.getElementById('f-sito-web').value // honeypot, resta vuoto per un utente reale
     };
 
-    if (!payload.nome || !payload.cognome || !payload.email || !payload.telefono) {
-      accessMsg.textContent = 'Compila tutti i campi prima di inviare.';
+    var primoNonValido = validaCampi(payload);
+    if (primoNonValido) {
+      primoNonValido.focus();
+      accessMsg.textContent = 'Controlla i campi evidenziati in rosso.';
       accessMsg.className = 'form-msg err';
       return;
     }
