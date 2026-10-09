@@ -52,7 +52,6 @@
   header nav{display:flex; gap:22px; font-size:14.5px; font-weight:600}
   header nav a{text-decoration:none; color:var(--muted2); opacity:.85}
   header nav a:hover{opacity:1; color:var(--gold)}
-  @media (max-width:600px){ header nav{display:none} }
 
   /* Buttons */
   .btn{
@@ -161,35 +160,142 @@
   footer .copy{font-size:12.5px; color:var(--muted)}
 
   .section-head{max-width:600px; margin-bottom:36px}
+
+  /* ═══ Schede principali: Servizio / Calcolatore ═══ */
+  html{overflow-anchor:none}
+  .view[hidden]{display:none !important}
+  .view-switch{display:inline-flex; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:4px; gap:2px}
+  .view-switch a{text-decoration:none; font-size:13.5px; font-weight:700; color:var(--muted2); padding:7px 16px; border-radius:999px; white-space:nowrap}
+  .view-switch a:hover{color:var(--gold)}
+  .view-switch a.on{background:var(--gold); color:var(--on-gold)}
+  header .right{display:flex; align-items:center; gap:22px}
+  @media (max-width:860px){ header nav{display:none} }
+  @media (max-width:400px){ .view-switch a{padding:7px 12px; font-size:13px} .logo{font-size:16px} }
+
+  /* ═══ Calcolatore ═══ */
+  .calc-hero{padding:48px 0 8px}
+  .calc-hero h1{font-size:clamp(28px,5vw,40px)}
+  .calc-hero .lead{font-size:17px; max-width:640px}
+  .calc-layout{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:20px; align-items:stretch; padding:28px 0 64px}
+  @media (max-width:820px){ .calc-layout{grid-template-columns:1fr} }
+  .calc-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:26px}
+  .calc-group + .calc-group{margin-top:26px; padding-top:24px; border-top:1px solid var(--line)}
+  .calc-group-head{display:flex; align-items:center; gap:12px; margin-bottom:18px}
+  .calc-group-head .n{width:30px; height:30px; border-radius:9px; background:var(--gold); color:var(--on-gold);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex:0 0 auto}
+  .calc-group-head h3{font-size:16px; margin:0}
+  .calc-group-head p{font-size:12.5px; color:var(--muted); margin:2px 0 0}
+  .calc-fields{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:end}
+  @media (max-width:480px){ .calc-fields{grid-template-columns:1fr} }
+  .calc-f label{display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--muted2); margin-bottom:6px; min-height:22px}
+  .calc-in{position:relative}
+  .calc-in .u{position:absolute; left:13px; top:50%; transform:translateY(-50%); color:var(--gold); font-weight:700; font-size:14px; pointer-events:none}
+  .calc-in input{width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:12px; color:var(--txt);
+    font-family:inherit; font-size:16px; font-weight:600; padding:12px 13px 12px 32px; font-variant-numeric:tabular-nums}
+  .calc-in input:focus{outline:2px solid var(--gold); outline-offset:1px}
+  .calc-hint{display:block; font-size:11.5px; color:var(--muted); margin-top:5px}
+  .calc-tip{display:inline-flex; align-items:center; justify-content:center; width:17px; height:17px; border-radius:50%;
+    border:1px solid var(--line); font-size:10.5px; color:var(--muted); cursor:help}
+  .calc-reset{margin-top:22px; background:transparent; border:1px solid var(--line); color:var(--muted2); border-radius:999px;
+    font-family:inherit; font-size:13px; font-weight:600; padding:8px 16px; cursor:pointer}
+  .calc-reset:hover{border-color:var(--gold); color:var(--gold)}
+
+  /* Colonne di pari altezza: il pannello "Effetto sul conto broker" si allunga per pareggiare la colonna sinistra */
+  .calc-out{display:flex; flex-direction:column; gap:16px}
+  .calc-out .calc-panel.grow{flex:1 1 auto; display:flex; flex-direction:column}
+  .calc-out .calc-panel.grow .rows{flex:1; display:flex; flex-direction:column; justify-content:center}
+  .calc-card{display:flex; flex-direction:column}
+  .calc-card .calc-reset{align-self:flex-start; margin-top:auto}
+  .calc-card .calc-group:last-of-type{margin-bottom:22px}
+  section[id]{scroll-margin-top:72px}
+  .calc-panel{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:24px}
+  .calc-panel.bot{border-color:var(--gold); background:linear-gradient(180deg, rgba(255,221,0,.07), rgba(255,221,0,0) 70%), var(--surface)}
+  .calc-panel h3{font-size:12.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--gold); margin:0 0 16px}
+  .calc-kpis{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  @media (max-width:440px){ .calc-kpis{grid-template-columns:1fr} }
+  .calc-kpi{background:var(--surface2); border:1px solid var(--line); border-radius:14px; padding:14px 16px 14px; position:relative; overflow:hidden}
+  .calc-kpi.sl{--c:#EF4444} .calc-kpi.tp{--c:#22C55E}
+  .calc-kpi .k{display:flex; align-items:center; gap:7px; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:6px}
+  .calc-kpi .k i{font-style:normal; font-size:10.5px; font-weight:800; color:#fff; background:var(--c); border-radius:5px; padding:1px 6px; letter-spacing:.04em}
+  .calc-kpi .v{font-size:clamp(22px,3.2vw,27px); font-weight:800; color:var(--txt); font-variant-numeric:tabular-nums; line-height:1.15; word-break:break-word}
+  .calc-split{margin-top:22px}
+  .calc-split .bar{display:flex; align-items:center; gap:4px; height:10px}
+  .calc-split .seg{height:100%; border-radius:3px; min-width:4px; transition:flex-grow .2s}
+  .calc-split .seg.sl{background:#EF4444; border-radius:999px 3px 3px 999px}
+  .calc-split .seg.tp{background:#22C55E; border-radius:3px 999px 999px 3px}
+  .calc-split .mark{flex:0 0 4px; height:22px; border-radius:2px; background:var(--gold)}
+  .calc-split .lbls{display:flex; justify-content:space-between; gap:10px; margin-top:10px; font-size:11.5px; color:var(--muted); font-variant-numeric:tabular-nums; line-height:1.35}
+  .calc-split .lbls b{display:block; color:var(--muted2); font-weight:700; font-size:12.5px}
+  .calc-split .lbls .m{text-align:center; color:var(--gold)} .calc-split .lbls .m b{color:var(--gold)}
+  .calc-split .lbls .r{text-align:right}
+  .calc-rr{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px; padding-top:16px; border-top:1px solid var(--line)}
+  .calc-rr .k{font-size:13.5px; font-weight:600; color:var(--txt)}
+  .calc-rr .k small{display:block; font-size:12px; font-weight:400; color:var(--muted)}
+  .calc-rr .v{font-size:22px; font-weight:800; color:var(--gold); font-variant-numeric:tabular-nums; white-space:nowrap}
+  /* Selettore lingua */
+  .lang-select{appearance:none; -webkit-appearance:none; background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239CA3AF'/%3E%3C/svg%3E") no-repeat right 10px center;
+    border:1px solid var(--line); border-radius:999px; color:var(--muted2); font-family:inherit; font-size:13px; font-weight:700; padding:8px 26px 8px 12px; cursor:pointer}
+  .lang-select:hover, .lang-select:focus{border-color:var(--gold); color:var(--gold); outline:none}
+  .lang-select option{background:var(--surface); color:var(--txt)}
+  .video-lang{font-size:13px; color:var(--muted); margin-top:-20px; margin-bottom:24px}
+  @media (max-width:440px){ header .wrap{padding:12px 14px} header .right{gap:8px} .view-switch a{padding:7px 10px; font-size:12.5px} .lang-select{padding:7px 22px 7px 9px; font-size:12px; background-position:right 7px center} .logo{font-size:15px} .logo .badge{padding:2px 6px} }
+  .calc-row{display:flex; align-items:center; gap:14px; padding:14px 0}
+  .calc-row + .calc-row{border-top:1px solid var(--line)}
+  .calc-row .tag{flex:0 0 auto; width:40px; height:40px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:800; color:#fff}
+  .calc-row .tag.sl{background:#EF4444} .calc-row .tag.tp{background:#22C55E}
+  .calc-row .k{flex:1; font-size:14px; font-weight:600; color:var(--txt)}
+  .calc-row .k small{display:block; font-size:12px; font-weight:400; color:var(--muted)}
+  .calc-row .v{font-size:21px; font-weight:800; font-variant-numeric:tabular-nums; white-space:nowrap; text-align:right}
+  .calc-row .v small{display:block; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase}
+  .calc-row.pos .v{color:#22C55E} .calc-row.neg .v{color:#EF4444}
+  .calc-cta{grid-column:1/-1; display:flex; align-items:center; justify-content:space-between; gap:16px 24px; flex-wrap:wrap; padding:24px 28px}
+  .calc-cta p{margin:0; font-size:17px; font-weight:700; color:var(--txt)}
+  @media (max-width:560px){ .calc-cta .btn{width:100%} }
+  @media (max-width:360px){ header .right{gap:6px} .view-switch{padding:3px} .view-switch a{padding:6px 8px; font-size:12px} .lang-select{padding:6px 18px 6px 7px; background-position:right 5px center} .logo{gap:4px} }
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a href="#top" class="logo"><span class="badge">CORE</span>54</a>
-    <nav>
-      <a href="#come-funziona">Come funziona</a>
-      <a href="#video">Lezioni gratuite</a>
-      <a href="#prezzi">Prezzi</a>
-      <a href="#accesso">Accesso</a>
-    </nav>
+    <a href="#servizio" class="logo"><span class="badge">CORE</span>54</a>
+    <div class="right">
+      <nav id="main-nav">
+        <a href="#come-funziona" data-i18n="nav.how">Come funziona</a>
+        <a href="#video" data-i18n="nav.video">Lezioni gratuite</a>
+        <a href="#prezzi" data-i18n="nav.prices">Prezzi</a>
+        <a href="#accesso" data-i18n="nav.access">Accesso</a>
+      </nav>
+      <div class="view-switch" role="tablist">
+        <a href="#servizio" data-view="servizio" role="tab" data-i18n="view.service">Servizio</a>
+        <a href="#calcolatore" data-view="calcolatore" role="tab" data-i18n="view.calc">Calcolatore</a>
+      </div>
+      <select class="lang-select" id="lang-select" aria-label="Lingua / Language">
+        <option value="it">IT</option>
+        <option value="en">EN</option>
+        <option value="de">DE</option>
+        <option value="es">ES</option>
+        <option value="pl">PL</option>
+      </select>
+    </div>
   </div>
 </header>
 
-<main id="top">
+<!-- ═══════════ SCHEDA SERVIZIO (landing) ═══════════ -->
+<main class="view" id="view-servizio">
 
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">Posti limitati ogni mese</span>
-      <h1>Un metodo strutturato e collaudato per costruire una seconda entrata.</h1>
-      <p class="lead">Una volta imparato, la gestione di tutti i giorni richiede solo pochi minuti — pensato per stare dentro una vita già piena di impegni, non per sostituirla.</p>
+      <span class="eyebrow" data-i18n="hero.eyebrow">Posti limitati ogni mese</span>
+      <h1 data-i18n="hero.title">Un metodo strutturato e collaudato per costruire una seconda entrata.</h1>
+      <p class="lead" data-i18n="hero.lead">Una volta imparato, la gestione di tutti i giorni richiede solo pochi minuti — pensato per stare dentro una vita già piena di impegni, non per sostituirla.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#accesso">Richiedi l'accesso in anteprima</a>
-        <a class="btn btn-ghost" href="#video">Guarda le lezioni gratuite</a>
+        <a class="btn btn-primary" href="#accesso" data-i18n="hero.cta1">Richiedi l'accesso in anteprima</a>
+        <a class="btn btn-ghost" href="#video" data-i18n="hero.cta2">Guarda le lezioni gratuite</a>
       </div>
-      <p class="hero-note">L'accesso è su invito, in piccoli gruppi ogni mese — così chi entra riceve davvero attenzione.</p>
+      <p class="hero-note" data-i18n="hero.note">L'accesso è su invito, in piccoli gruppi ogni mese — così chi entra riceve davvero attenzione.</p>
     </div>
   </section>
 
@@ -197,24 +303,24 @@
   <section id="come-funziona">
     <div class="wrap">
       <div class="section-head">
-        <h2>Come funziona, in tre passi</h2>
-        <p>Nessun salto nel buio: prima capisci il metodo, poi decidi con calma.</p>
+        <h2 data-i18n="how.title">Come funziona, in tre passi</h2>
+        <p data-i18n="how.sub">Nessun salto nel buio: prima capisci il metodo, poi decidi con calma.</p>
       </div>
       <div class="steps">
         <div class="step-card">
           <div class="step-num">1</div>
-          <h3>Guardi le lezioni gratuite</h3>
-          <p>Un assaggio per capire cosa puoi aspettarti, senza registrazione.</p>
+          <h3 data-i18n="how.s1t">Guardi le lezioni gratuite</h3>
+          <p data-i18n="how.s1p">Un assaggio per capire cosa puoi aspettarti, senza registrazione.</p>
         </div>
         <div class="step-card">
           <div class="step-num">2</div>
-          <h3>Richiedi l'accesso</h3>
-          <p>Scrivici: ti rispondiamo con le istruzioni per installare l'app e i passi successivi.</p>
+          <h3 data-i18n="how.s2t">Richiedi l'accesso</h3>
+          <p data-i18n="how.s2p">Scrivici: ti rispondiamo con le istruzioni per installare l'app e i passi successivi.</p>
         </div>
         <div class="step-card">
           <div class="step-num">3</div>
-          <h3>Impari con calma, poi parti</h3>
-          <p>Riceverai il corso completo e la possibilità di imparare in Demo + un'ora di coaching 1:1 da effettuare quando vorrai.</p>
+          <h3 data-i18n="how.s3t">Impari con calma, poi parti</h3>
+          <p data-i18n="how.s3p">Riceverai il corso completo e la possibilità di imparare in Demo + un'ora di coaching 1:1 da effettuare quando vorrai.</p>
         </div>
       </div>
     </div>
@@ -224,46 +330,47 @@
   <section id="video">
     <div class="wrap">
       <div class="section-head">
-        <h2>Le prime lezioni, gratis</h2>
-        <p>Guarda alcune lezioni in anteprima per capire cosa ti aspetta, gratuitamente.</p>
+        <h2 data-i18n="video.title">Le prime lezioni, gratis</h2>
+        <p data-i18n="video.sub">Guarda alcune lezioni in anteprima per capire cosa ti aspetta, gratuitamente.</p>
       </div>
+      <p class="video-lang" id="video-lang" data-i18n="video.lang" hidden></p>
       <div class="video-grid" id="video-grid">
         <div class="video-card" data-video-id="4622f8f4-adcb-442b-a9c8-c614b594f5c7">
           <div class="video-frame">
-            <img loading="lazy" alt="Come funziona, in sintesi" src="https://vz-0bb944b6-412.b-cdn.net/4622f8f4-adcb-442b-a9c8-c614b594f5c7/thumbnail.jpg">
-            <button class="play-btn" aria-label="Riproduci: Come funziona, in sintesi">
+            <img loading="lazy" alt="" src="https://vz-0bb944b6-412.b-cdn.net/4622f8f4-adcb-442b-a9c8-c614b594f5c7/thumbnail.jpg">
+            <button class="play-btn" aria-label="Play">
               <span class="circle"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 3.5v13l12-6.5-12-6.5z" fill="#0A0B0E"/></svg></span>
             </button>
           </div>
           <div class="video-meta">
-            <span class="tag">Modulo 1</span>
-            <h3>1.1 Come funziona, in sintesi</h3>
+            <span class="tag" data-i18n="video.m1">Modulo 1</span>
+            <h3 data-i18n="video.v1">1.1 Come funziona, in sintesi</h3>
           </div>
         </div>
 
         <div class="video-card" data-video-id="3c60617a-94cd-4733-ac71-f6dceddc7ad5">
           <div class="video-frame">
-            <img loading="lazy" alt="Strumenti di trading" src="https://vz-0bb944b6-412.b-cdn.net/3c60617a-94cd-4733-ac71-f6dceddc7ad5/thumbnail.jpg">
-            <button class="play-btn" aria-label="Riproduci: Strumenti di trading">
+            <img loading="lazy" alt="" src="https://vz-0bb944b6-412.b-cdn.net/3c60617a-94cd-4733-ac71-f6dceddc7ad5/thumbnail.jpg">
+            <button class="play-btn" aria-label="Play">
               <span class="circle"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 3.5v13l12-6.5-12-6.5z" fill="#0A0B0E"/></svg></span>
             </button>
           </div>
           <div class="video-meta">
-            <span class="tag">Modulo 2</span>
-            <h3>2.1 Strumenti di trading</h3>
+            <span class="tag" data-i18n="video.m2">Modulo 2</span>
+            <h3 data-i18n="video.v2">2.1 Strumenti di trading</h3>
           </div>
         </div>
 
         <div class="video-card" data-video-id="5eb504b0-c11c-4206-9db8-66f67f8a291f">
           <div class="video-frame">
-            <img loading="lazy" alt="La strategia in azione" src="https://vz-0bb944b6-412.b-cdn.net/5eb504b0-c11c-4206-9db8-66f67f8a291f/thumbnail.jpg">
-            <button class="play-btn" aria-label="Riproduci: La strategia in azione">
+            <img loading="lazy" alt="" src="https://vz-0bb944b6-412.b-cdn.net/5eb504b0-c11c-4206-9db8-66f67f8a291f/thumbnail.jpg">
+            <button class="play-btn" aria-label="Play">
               <span class="circle"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 3.5v13l12-6.5-12-6.5z" fill="#0A0B0E"/></svg></span>
             </button>
           </div>
           <div class="video-meta">
-            <span class="tag">Bonus</span>
-            <h3>3.8 La strategia in azione</h3>
+            <span class="tag" data-i18n="video.bonus">Bonus</span>
+            <h3 data-i18n="video.v3">3.8 La strategia in azione</h3>
           </div>
         </div>
       </div>
@@ -274,35 +381,35 @@
   <section id="prezzi">
     <div class="wrap">
       <div class="section-head">
-        <h2>Prezzi, senza sorprese</h2>
+        <h2 data-i18n="prices.title">Prezzi, senza sorprese</h2>
       </div>
       <div class="price-grid">
         <div class="price-card featured">
-          <span class="plan-tag">Lifetime</span>
-          <div class="amount">399€ <small>una tantum</small></div>
-          <p class="sub">Contiene tutto quello che serve per imparare, partire in demo e successivamente iniziare ad operare in reale.</p>
+          <span class="plan-tag" data-i18n="life.tag">Lifetime</span>
+          <div class="amount">399€ <small data-i18n="life.once">una tantum</small></div>
+          <p class="sub" data-i18n="life.sub">Contiene tutto quello che serve per imparare, partire in demo e successivamente iniziare ad operare in reale.</p>
           <ul class="price-list">
-            <li><span class="check">✓</span> Video corso di formazione completo, senza scadenza: lo rivedi tutte le volte che vuoi</li>
-            <li><span class="check">✓</span> Più strategie operative incluse nel corso, per accompagnarti passo dopo passo nell'apprendimento del metodo</li>
-            <li><span class="check">✓</span> App CORE-54 (per iPhone e Android)</li>
-            <li><span class="check">✓</span> Motore di esecuzione operazioni sempre attivo</li>
-            <li><span class="check">✓</span> 1 ora di coaching 1:1, da richiedere quando vuoi (entro i primi due mesi dall'attivazione)</li>
-            <li><span class="check">✓</span> 2 mesi di servizio VPS dedicata inclusi</li>
-            <li><span class="check">✓</span> Accesso alla community privata su Telegram</li>
+            <li><span class="check">✓</span> <span data-i18n="life.l1">Video corso di formazione completo, senza scadenza: lo rivedi tutte le volte che vuoi</span></li>
+            <li><span class="check">✓</span> <span data-i18n="life.l2">Più strategie operative incluse nel corso, per accompagnarti passo dopo passo nell'apprendimento del metodo</span></li>
+            <li><span class="check">✓</span> <span data-i18n="life.l3">App CORE-54 (per iPhone e Android)</span></li>
+            <li><span class="check">✓</span> <span data-i18n="life.l4">Motore di esecuzione operazioni sempre attivo</span></li>
+            <li><span class="check">✓</span> <span data-i18n="life.l5">1 ora di coaching 1:1, da richiedere quando vuoi (entro i primi due mesi dall'attivazione)</span></li>
+            <li><span class="check">✓</span> <span data-i18n="life.l6">2 mesi di servizio VPS dedicata inclusi</span></li>
+            <li><span class="check">✓</span> <span data-i18n="life.l7">Accesso alla community privata su Telegram</span></li>
           </ul>
-          <p class="price-note">Garanzia soddisfatti o rimborsati: 100% entro 14 giorni.</p>
+          <p class="price-note" data-i18n="life.note">Garanzia soddisfatti o rimborsati: 100% entro 14 giorni.</p>
         </div>
         <div class="price-card">
-          <span class="plan-tag">Ricorrente</span>
-          <div class="amount">219€ <small>/ mese</small></div>
-          <p class="sub">Attivabile dal terzo mese in avanti.</p>
+          <span class="plan-tag" data-i18n="rec.tag">Ricorrente</span>
+          <div class="amount">219€ <small data-i18n="rec.month">/ mese</small></div>
+          <p class="sub" data-i18n="rec.sub">Attivabile dal terzo mese in avanti.</p>
           <ul class="price-list">
-            <li><span class="check">✓</span> Rinnovo dell'utilizzo della VPS dedicata</li>
-            <li><span class="check">✓</span> Rinnovo del Motore di esecuzione operazioni sempre attivo</li>
-            <li><span class="check">✓</span> Permanenza all'interno della community privata</li>
-            <li><span class="check">✓</span> Aggiornamenti di app e strategie</li>
+            <li><span class="check">✓</span> <span data-i18n="rec.l1">Rinnovo dell'utilizzo della VPS dedicata</span></li>
+            <li><span class="check">✓</span> <span data-i18n="rec.l2">Rinnovo del Motore di esecuzione operazioni sempre attivo</span></li>
+            <li><span class="check">✓</span> <span data-i18n="rec.l3">Permanenza all'interno della community privata</span></li>
+            <li><span class="check">✓</span> <span data-i18n="rec.l4">Aggiornamenti di app e strategie</span></li>
           </ul>
-          <p class="price-note">Per proseguire ad utilizzare il servizio anche dopo il periodo di prova incluso nel Lifetime.</p>
+          <p class="price-note" data-i18n="rec.note">Per proseguire ad utilizzare il servizio anche dopo il periodo di prova incluso nel Lifetime.</p>
         </div>
       </div>
     </div>
@@ -312,15 +419,15 @@
   <section>
     <div class="wrap">
       <div class="section-head">
-        <h2>Cosa aspettarti</h2>
+        <h2 data-i18n="trust.title">Cosa aspettarti</h2>
       </div>
       <div class="trust-list">
-        <div class="trust-item"><span class="check">✓</span> <span><strong>PRIVACY</strong> — le tue credenziali di trading restano solo tue: nessuno le vede, nemmeno noi.</span></div>
-        <div class="trust-item"><span class="check">✓</span> <span><strong>PIENO CONTROLLO DEI TUOI FONDI</strong> — i fondi e i conti restano sempre tuoi, sotto il tuo controllo esclusivo.</span></div>
-        <div class="trust-item"><span class="check">✓</span> <span><strong>GESTIONE AUTONOMA DELLE POSIZIONI A MERCATO</strong> — sei tu che decidi come e quando entrare a mercato.</span></div>
-        <div class="trust-item"><span class="check">✓</span> <span><strong>SUPPORTO</strong> — posti aperti ad un numero limitato di persone ogni mese (max 5).</span></div>
-        <div class="trust-item"><span class="check">✓</span> <span><strong>SEMPLICITÀ E COSTANZA</strong> — un metodo davvero semplice, ma da gestire con le attenzioni di un business vero.</span></div>
-        <div class="trust-item"><span class="check">✓</span> <span><strong>COMMUNITY</strong> — privata e a numero chiuso, dedicata solo a chi entra, per confrontarsi e non restare da soli.</span></div>
+        <div class="trust-item"><span class="check">✓</span> <span data-i18n-html="trust.1"><strong>PRIVACY</strong> — le tue credenziali di trading restano solo tue: nessuno le vede, nemmeno noi.</span></div>
+        <div class="trust-item"><span class="check">✓</span> <span data-i18n-html="trust.2"><strong>PIENO CONTROLLO DEI TUOI FONDI</strong> — i fondi e i conti restano sempre tuoi, sotto il tuo controllo esclusivo.</span></div>
+        <div class="trust-item"><span class="check">✓</span> <span data-i18n-html="trust.3"><strong>GESTIONE AUTONOMA DELLE POSIZIONI A MERCATO</strong> — sei tu che decidi come e quando entrare a mercato.</span></div>
+        <div class="trust-item"><span class="check">✓</span> <span data-i18n-html="trust.4"><strong>SUPPORTO</strong> — posti aperti ad un numero limitato di persone ogni mese (max 5).</span></div>
+        <div class="trust-item"><span class="check">✓</span> <span data-i18n-html="trust.5"><strong>SEMPLICITÀ E COSTANZA</strong> — un metodo davvero semplice, ma da gestire con le attenzioni di un business vero.</span></div>
+        <div class="trust-item"><span class="check">✓</span> <span data-i18n-html="trust.6"><strong>COMMUNITY</strong> — privata e a numero chiuso, dedicata solo a chi entra, per confrontarsi e non restare da soli.</span></div>
       </div>
     </div>
   </section>
@@ -331,38 +438,38 @@
       <form class="access-form" id="access-form" novalidate>
         <div class="form-row">
           <div class="field">
-            <label for="f-nome">Nome</label>
+            <label for="f-nome" data-i18n="form.nome">Nome</label>
             <input id="f-nome" name="nome" type="text" required autocomplete="given-name">
             <span class="field-err" id="err-nome"></span>
           </div>
           <div class="field">
-            <label for="f-cognome">Cognome</label>
+            <label for="f-cognome" data-i18n="form.cognome">Cognome</label>
             <input id="f-cognome" name="cognome" type="text" required autocomplete="family-name">
             <span class="field-err" id="err-cognome"></span>
           </div>
         </div>
         <div class="form-row">
           <div class="field">
-            <label for="f-email">Email</label>
+            <label for="f-email" data-i18n="form.email">Email</label>
             <input id="f-email" name="email" type="email" required autocomplete="email">
             <span class="field-err" id="err-email"></span>
           </div>
           <div class="field">
-            <label for="f-telefono">Telefono</label>
+            <label for="f-telefono" data-i18n="form.tel">Telefono</label>
             <input id="f-telefono" name="telefono" type="tel" required autocomplete="tel" placeholder="+39 333 1234567">
-            <span class="field-hint">Con prefisso internazionale, es. +39</span>
+            <span class="field-hint" data-i18n="form.tel_hint">Con prefisso internazionale, es. +39</span>
             <span class="field-err" id="err-telefono"></span>
           </div>
         </div>
         <div class="field full">
-          <label for="f-piattaforma">Piattaforma</label>
+          <label for="f-piattaforma" data-i18n="form.platform">Piattaforma</label>
           <select id="f-piattaforma" name="piattaforma" required>
             <option value="ios">iOS (iPhone)</option>
             <option value="android">Android</option>
           </select>
         </div>
         <div class="field full">
-          <label for="f-messaggio">Messaggio</label>
+          <label for="f-messaggio" data-i18n="form.msg">Messaggio</label>
           <textarea id="f-messaggio" name="messaggio">Ciao! Vorrei richiedere l'accesso in anteprima a CORE-54.</textarea>
         </div>
 
@@ -372,7 +479,7 @@
           <input id="f-sito-web" name="sito_web" type="text" tabindex="-1" autocomplete="off">
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block" id="access-submit">Invia richiesta</button>
+        <button type="submit" class="btn btn-primary btn-block" id="access-submit" data-i18n="form.submit">Invia richiesta</button>
       </form>
       <p class="form-msg" id="access-msg"></p>
     </div>
@@ -380,9 +487,110 @@
 
 </main>
 
+<!-- ═══════════ SCHEDA CALCOLATORE ═══════════ -->
+<main class="view" id="view-calcolatore" hidden>
+  <section class="calc-hero">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="calc.eyebrow">Strumento gratuito</span>
+      <h1 data-i18n="calc.title">Calcolatore CORE-54</h1>
+      <p class="lead" data-i18n="calc.lead">Inserisci i dati della prop su cui stai lavorando: ottieni subito i valori di SL e TP da impostare su Core54 e vedi come cambia il saldo del broker in entrambi gli scenari.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="calc-layout">
+
+      <!-- INPUT -->
+      <div class="calc-card">
+        <div class="calc-group">
+          <div class="calc-group-head">
+            <span class="n">1</span>
+            <div><h3 data-i18n="calc.g1t">La tua prop</h3><p data-i18n="calc.g1p">Parametri della sfida</p></div>
+          </div>
+          <div class="calc-fields">
+            <div class="calc-f">
+              <label for="c-balance" data-i18n="calc.balance">Balance iniziale</label>
+              <div class="calc-in"><span class="u">$</span><input type="number" id="c-balance" inputmode="decimal" step="1000" data-def="100000"></div>
+            </div>
+            <div class="calc-f">
+              <label for="c-dd" data-i18n="calc.dd">Drawdown massimo</label>
+              <div class="calc-in"><span class="u">%</span><input type="number" id="c-dd" inputmode="decimal" step="0.1" data-def="6"></div>
+            </div>
+            <div class="calc-f" style="grid-column:1/-1">
+              <label for="c-incasso"><span data-i18n="calc.incasso">Incasso prop bruciata</span> <span class="calc-tip" data-i18n-title="calc.incasso_tip" title="Quanto incassa il broker se la prop arriva al drawdown massimo.">?</span></label>
+              <div class="calc-in"><span class="u">$</span><input type="number" id="c-incasso" inputmode="decimal" step="1" data-def="750"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-group">
+          <div class="calc-group-head">
+            <span class="n">2</span>
+            <div><h3 data-i18n="calc.g2t">I saldi della prop</h3><p data-i18n="calc.g2p">Dove sei adesso e dove arrivi a TP o a SL</p></div>
+          </div>
+          <div class="calc-fields">
+            <div class="calc-f">
+              <label for="c-saldo" data-i18n="calc.saldo">Saldo attuale</label>
+              <div class="calc-in"><span class="u">$</span><input type="number" id="c-saldo" inputmode="decimal" step="100" data-def="100000"></div>
+            </div>
+            <div class="calc-f">
+              <label for="c-tp" data-i18n="calc.tp">Saldo a TP</label>
+              <div class="calc-in"><span class="u">$</span><input type="number" id="c-tp" inputmode="decimal" step="100" data-def="103000"></div>
+            </div>
+            <div class="calc-f">
+              <label for="c-sl" data-i18n="calc.sl">Saldo a SL</label>
+              <div class="calc-in"><span class="u">$</span><input type="number" id="c-sl" inputmode="decimal" step="100" data-def="98000"></div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="calc-reset" id="c-reset" data-i18n="calc.reset">↺ Ripristina valori di esempio</button>
+      </div>
+
+      <!-- OUTPUT -->
+      <div class="calc-out">
+        <div class="calc-panel bot">
+          <h3 data-i18n="calc.out_title">Da impostare su Core54</h3>
+          <div class="calc-kpis">
+            <div class="calc-kpi sl"><div class="k"><i>SL</i><span data-i18n="calc.loss">Perdita prop</span></div><div class="v" id="o-perdita">—</div></div>
+            <div class="calc-kpi tp"><div class="k"><i>TP</i><span data-i18n="calc.gain">Guadagno prop</span></div><div class="v" id="o-guadagno">—</div></div>
+          </div>
+          <div class="calc-split" aria-hidden="true">
+            <div class="bar"><span class="seg sl" id="o-seg-sl" style="flex-grow:1"></span><span class="mark"></span><span class="seg tp" id="o-seg-tp" style="flex-grow:1"></span></div>
+            <div class="lbls">
+              <span class="l"><span data-i18n="calc.sl">Saldo a SL</span><b id="o-sl-lbl">—</b></span>
+              <span class="m"><span data-i18n="calc.saldo">Saldo attuale</span><b id="o-saldo-lbl">—</b></span>
+              <span class="r"><span data-i18n="calc.tp">Saldo a TP</span><b id="o-tp-lbl">—</b></span>
+            </div>
+          </div>
+          <div class="calc-rr">
+            <div class="k"><span data-i18n="calc.rr">Rapporto rischio/rendimento</span><small data-i18n="calc.rr_sub">Perdita a SL : guadagno a TP</small></div>
+            <div class="v" id="o-rr">—</div>
+          </div>
+        </div>
+
+        <div class="calc-panel grow">
+          <h3 data-i18n="calc.broker_title">Effetto sul conto broker</h3>
+          <div class="rows">
+          <div class="calc-row" id="o-dsl-box"><span class="tag sl">SL</span><div class="k"><span data-i18n="calc.if_sl">Se la prop va a SL</span><small data-i18n="calc.delta_sub">variazione netta del saldo broker</small></div><div class="v"><span id="o-dsl">—</span></div></div>
+          <div class="calc-row" id="o-dtp-box"><span class="tag tp">TP</span><div class="k"><span data-i18n="calc.if_tp">Se la prop va a TP</span><small data-i18n="calc.delta_sub">variazione netta del saldo broker</small></div><div class="v"><span id="o-dtp">—</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA a tutta larghezza -->
+      <div class="calc-panel calc-cta">
+        <p data-i18n="calc.cta_text">Vuoi che sia CORE-54 a gestire tutto in automatico?</p>
+        <a class="btn btn-primary" href="#accesso" data-i18n="calc.cta_btn">Richiedi l'accesso</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
 <footer>
   <div class="wrap">
-    <p class="disclaimer">
+    <p class="disclaimer" data-i18n-html="footer.disclaimer">
       <strong>Avvertenza.</strong> CORE-54 è uno strumento software concesso in licenza d'uso, non un intermediario finanziario, una banca, una SIM né un consulente finanziario, e non presta consulenza personalizzata né gestione di portafogli. Il trading con leva comporta un rischio elevato, compresa la possibilità di perdere il capitale investito; risultati passati o simulazioni non sono garanzia di risultati futuri. Conti e fondi restano sempre nella titolarità esclusiva dell'utente, che è l'unico responsabile delle operazioni eseguite.
     </p>
     <div class="bottom-row">
@@ -393,57 +601,432 @@
 </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
 
-  // ─── CONFIG DA COMPLETARE ──────────────────────────────────────────────────
-  // Chiave "publishable" (anon) del progetto Supabase — NON è segreta, è fatta per stare nel
-  // codice pubblico (è la stessa filosofia della chiave usata dall'app). La trovi in:
-  // Supabase Dashboard → Project Settings → API → Project API keys → chiave "anon" / "publishable".
-  // Finché resta il placeholder qui sotto, il form mostra un messaggio di errore invece di
-  // inviare (fallback: si può sempre scrivere a info@core54.app).
+  // ═══ TRADUZIONI (IT di riferimento; EN/DE/ES/PL) — stessa lista lingue dell'app ═══
+  var I18N = {
+    it: {
+      'meta.title': 'CORE-54 — Accesso in anteprima',
+      'meta.desc': "CORE-54: un metodo strutturato per costruire una seconda entrata, con la serietà di un business vero. Guarda le prime lezioni gratuite e richiedi l'accesso in anteprima.",
+      'nav.how': 'Come funziona', 'nav.video': 'Lezioni gratuite', 'nav.prices': 'Prezzi', 'nav.access': 'Accesso',
+      'view.service': 'Servizio', 'view.calc': 'Calcolatore',
+      'hero.eyebrow': 'Posti limitati ogni mese',
+      'hero.title': 'Un metodo strutturato e collaudato per costruire una seconda entrata.',
+      'hero.lead': 'Una volta imparato, la gestione di tutti i giorni richiede solo pochi minuti — pensato per stare dentro una vita già piena di impegni, non per sostituirla.',
+      'hero.cta1': "Richiedi l'accesso in anteprima", 'hero.cta2': 'Guarda le lezioni gratuite',
+      'hero.note': "L'accesso è su invito, in piccoli gruppi ogni mese — così chi entra riceve davvero attenzione.",
+      'how.title': 'Come funziona, in tre passi',
+      'how.sub': 'Nessun salto nel buio: prima capisci il metodo, poi decidi con calma.',
+      'how.s1t': 'Guardi le lezioni gratuite', 'how.s1p': 'Un assaggio per capire cosa puoi aspettarti, senza registrazione.',
+      'how.s2t': "Richiedi l'accesso", 'how.s2p': "Scrivici: ti rispondiamo con le istruzioni per installare l'app e i passi successivi.",
+      'how.s3t': 'Impari con calma, poi parti', 'how.s3p': "Riceverai il corso completo e la possibilità di imparare in Demo + un'ora di coaching 1:1 da effettuare quando vorrai.",
+      'video.title': 'Le prime lezioni, gratis',
+      'video.sub': 'Guarda alcune lezioni in anteprima per capire cosa ti aspetta, gratuitamente.',
+      'video.lang': '',
+      'video.m1': 'Modulo 1', 'video.m2': 'Modulo 2', 'video.bonus': 'Bonus',
+      'video.v1': '1.1 Come funziona, in sintesi', 'video.v2': '2.1 Strumenti di trading', 'video.v3': '3.8 La strategia in azione',
+      'prices.title': 'Prezzi, senza sorprese',
+      'life.tag': 'Lifetime', 'life.once': 'una tantum',
+      'life.sub': 'Contiene tutto quello che serve per imparare, partire in demo e successivamente iniziare ad operare in reale.',
+      'life.l1': 'Video corso di formazione completo, senza scadenza: lo rivedi tutte le volte che vuoi',
+      'life.l2': "Più strategie operative incluse nel corso, per accompagnarti passo dopo passo nell'apprendimento del metodo",
+      'life.l3': 'App CORE-54 (per iPhone e Android)',
+      'life.l4': 'Motore di esecuzione operazioni sempre attivo',
+      'life.l5': "1 ora di coaching 1:1, da richiedere quando vuoi (entro i primi due mesi dall'attivazione)",
+      'life.l6': '2 mesi di servizio VPS dedicata inclusi',
+      'life.l7': 'Accesso alla community privata su Telegram',
+      'life.note': 'Garanzia soddisfatti o rimborsati: 100% entro 14 giorni.',
+      'rec.tag': 'Ricorrente', 'rec.month': '/ mese', 'rec.sub': 'Attivabile dal terzo mese in avanti.',
+      'rec.l1': "Rinnovo dell'utilizzo della VPS dedicata",
+      'rec.l2': 'Rinnovo del Motore di esecuzione operazioni sempre attivo',
+      'rec.l3': "Permanenza all'interno della community privata",
+      'rec.l4': 'Aggiornamenti di app e strategie',
+      'rec.note': 'Per proseguire ad utilizzare il servizio anche dopo il periodo di prova incluso nel Lifetime.',
+      'trust.title': 'Cosa aspettarti',
+      'trust.1': '<strong>PRIVACY</strong> — le tue credenziali di trading restano solo tue: nessuno le vede, nemmeno noi.',
+      'trust.2': '<strong>PIENO CONTROLLO DEI TUOI FONDI</strong> — i fondi e i conti restano sempre tuoi, sotto il tuo controllo esclusivo.',
+      'trust.3': '<strong>GESTIONE AUTONOMA DELLE POSIZIONI A MERCATO</strong> — sei tu che decidi come e quando entrare a mercato.',
+      'trust.4': '<strong>SUPPORTO</strong> — posti aperti ad un numero limitato di persone ogni mese (max 5).',
+      'trust.5': '<strong>SEMPLICITÀ E COSTANZA</strong> — un metodo davvero semplice, ma da gestire con le attenzioni di un business vero.',
+      'trust.6': '<strong>COMMUNITY</strong> — privata e a numero chiuso, dedicata solo a chi entra, per confrontarsi e non restare da soli.',
+      'form.nome': 'Nome', 'form.cognome': 'Cognome', 'form.email': 'Email', 'form.tel': 'Telefono',
+      'form.tel_hint': 'Con prefisso internazionale, es. +39', 'form.platform': 'Piattaforma', 'form.msg': 'Messaggio',
+      'form.msg_default': "Ciao! Vorrei richiedere l'accesso in anteprima a CORE-54.",
+      'form.submit': 'Invia richiesta', 'form.sending': 'Invio in corso...',
+      'form.ok': "Richiesta inviata correttamente!<br>Ti contatteremo a breve con le istruzioni per scaricare l'App e procedere alla registrazione.",
+      'form.err_send': 'Qualcosa non ha funzionato. Scrivici direttamente a <a href="mailto:info@core54.app">info@core54.app</a>.',
+      'form.err_conn': 'Modulo non ancora collegato. Scrivici direttamente a <a href="mailto:info@core54.app">info@core54.app</a>.',
+      'form.err_fields': 'Controlla i campi evidenziati in rosso.',
+      'form.err_nome': 'Inserisci il tuo nome.', 'form.err_cognome': 'Inserisci il tuo cognome.',
+      'form.err_email_req': 'Inserisci la tua email.', 'form.err_email_bad': 'Email non valida (es. nome@dominio.it).',
+      'form.err_tel_req': 'Inserisci il tuo numero.', 'form.err_tel_bad': 'Numero non valido: usa il prefisso internazionale, es. +39 333 1234567.',
+      'calc.eyebrow': 'Strumento gratuito', 'calc.title': 'Calcolatore CORE-54',
+      'calc.lead': 'Inserisci i dati della prop su cui stai lavorando: ottieni subito i valori di SL e TP da impostare su Core54 e vedi come cambia il saldo del broker in entrambi gli scenari.',
+      'calc.g1t': 'La tua prop', 'calc.g1p': 'Parametri della sfida',
+      'calc.balance': 'Balance iniziale', 'calc.dd': 'Drawdown massimo',
+      'calc.incasso': 'Incasso prop bruciata', 'calc.incasso_tip': 'Quanto incassa il broker se la prop arriva al drawdown massimo.',
+      'calc.g2t': 'I saldi della prop', 'calc.g2p': 'Dove sei adesso e dove arrivi a TP o a SL',
+      'calc.saldo': 'Saldo attuale', 'calc.tp': 'Saldo a TP', 'calc.sl': 'Saldo a SL',
+      'calc.reset': '↺ Ripristina valori di esempio',
+      'calc.out_title': 'Da impostare su Core54', 'calc.loss': 'Perdita prop', 'calc.gain': 'Guadagno prop',
+      'calc.rr': 'Rapporto rischio/rendimento', 'calc.rr_sub': 'Perdita a SL : guadagno a TP',
+      'calc.broker_title': 'Effetto sul conto broker',
+      'calc.if_sl': 'Se la prop va a SL', 'calc.if_tp': 'Se la prop va a TP', 'calc.delta_sub': 'variazione netta del saldo broker',
+      'calc.cta_text': 'Vuoi che sia CORE-54 a gestire tutto in automatico?', 'calc.cta_btn': "Richiedi l'accesso",
+      'footer.disclaimer': "<strong>Avvertenza.</strong> CORE-54 è uno strumento software concesso in licenza d'uso, non un intermediario finanziario, una banca, una SIM né un consulente finanziario, e non presta consulenza personalizzata né gestione di portafogli. Il trading con leva comporta un rischio elevato, compresa la possibilità di perdere il capitale investito; risultati passati o simulazioni non sono garanzia di risultati futuri. Conti e fondi restano sempre nella titolarità esclusiva dell'utente, che è l'unico responsabile delle operazioni eseguite."
+    },
+    en: {
+      'meta.title': 'CORE-54 — Early access',
+      'meta.desc': 'CORE-54: a structured method to build a second income, with the seriousness of a real business. Watch the first free lessons and request early access.',
+      'nav.how': 'How it works', 'nav.video': 'Free lessons', 'nav.prices': 'Pricing', 'nav.access': 'Access',
+      'view.service': 'Service', 'view.calc': 'Calculator',
+      'hero.eyebrow': 'Limited spots every month',
+      'hero.title': 'A structured, proven method to build a second income.',
+      'hero.lead': 'Once learned, day-to-day management takes just a few minutes — designed to fit into an already busy life, not to replace it.',
+      'hero.cta1': 'Request early access', 'hero.cta2': 'Watch the free lessons',
+      'hero.note': 'Access is by invitation, in small groups every month — so everyone who joins gets real attention.',
+      'how.title': 'How it works, in three steps',
+      'how.sub': 'No leap in the dark: first you understand the method, then you decide calmly.',
+      'how.s1t': 'Watch the free lessons', 'how.s1p': 'A taste of what to expect, no sign-up required.',
+      'how.s2t': 'Request access', 'how.s2p': "Write to us: we'll reply with instructions to install the app and the next steps.",
+      'how.s3t': 'Learn at your pace, then start', 'how.s3p': "You'll get the full course and the chance to learn in Demo + one hour of 1:1 coaching whenever you like.",
+      'video.title': 'The first lessons, free',
+      'video.sub': 'Watch a few preview lessons to see what awaits you, free of charge.',
+      'video.lang': 'Lessons are in Italian.',
+      'video.m1': 'Module 1', 'video.m2': 'Module 2', 'video.bonus': 'Bonus',
+      'video.v1': '1.1 How it works, in brief', 'video.v2': '2.1 Trading tools', 'video.v3': '3.8 The strategy in action',
+      'prices.title': 'Pricing, no surprises',
+      'life.tag': 'Lifetime', 'life.once': 'one-off',
+      'life.sub': 'Everything you need to learn, start in demo and then move on to live trading.',
+      'life.l1': 'Complete video training course, no expiry: rewatch it as often as you like',
+      'life.l2': 'Several operating strategies included in the course, guiding you step by step as you learn the method',
+      'life.l3': 'CORE-54 app (iPhone and Android)',
+      'life.l4': 'Always-on trade execution engine',
+      'life.l5': '1 hour of 1:1 coaching, to book whenever you want (within the first two months after activation)',
+      'life.l6': '2 months of dedicated VPS service included',
+      'life.l7': 'Access to the private Telegram community',
+      'life.note': 'Money-back guarantee: 100% within 14 days.',
+      'rec.tag': 'Recurring', 'rec.month': '/ month', 'rec.sub': 'Available from the third month onwards.',
+      'rec.l1': 'Renewal of the dedicated VPS',
+      'rec.l2': 'Renewal of the always-on trade execution engine',
+      'rec.l3': 'Continued membership of the private community',
+      'rec.l4': 'App and strategy updates',
+      'rec.note': 'To keep using the service after the trial period included in Lifetime.',
+      'trust.title': 'What to expect',
+      'trust.1': '<strong>PRIVACY</strong> — your trading credentials stay yours alone: nobody sees them, not even us.',
+      'trust.2': '<strong>FULL CONTROL OF YOUR FUNDS</strong> — funds and accounts always remain yours, under your exclusive control.',
+      'trust.3': '<strong>YOU MANAGE YOUR MARKET POSITIONS</strong> — you decide how and when to enter the market.',
+      'trust.4': '<strong>SUPPORT</strong> — spots open to a limited number of people each month (max 5).',
+      'trust.5': '<strong>SIMPLICITY AND CONSISTENCY</strong> — a truly simple method, but one to run with the care of a real business.',
+      'trust.6': "<strong>COMMUNITY</strong> — private and invitation-only, just for members, to share ideas and never feel alone.",
+      'form.nome': 'First name', 'form.cognome': 'Last name', 'form.email': 'Email', 'form.tel': 'Phone',
+      'form.tel_hint': 'With international prefix, e.g. +44', 'form.platform': 'Platform', 'form.msg': 'Message',
+      'form.msg_default': "Hi! I'd like to request early access to CORE-54.",
+      'form.submit': 'Send request', 'form.sending': 'Sending...',
+      'form.ok': "Request sent successfully!<br>We'll be in touch shortly with instructions to download the App and register.",
+      'form.err_send': 'Something went wrong. Write to us directly at <a href="mailto:info@core54.app">info@core54.app</a>.',
+      'form.err_conn': 'Form not connected yet. Write to us directly at <a href="mailto:info@core54.app">info@core54.app</a>.',
+      'form.err_fields': 'Please check the fields highlighted in red.',
+      'form.err_nome': 'Enter your first name.', 'form.err_cognome': 'Enter your last name.',
+      'form.err_email_req': 'Enter your email.', 'form.err_email_bad': 'Invalid email (e.g. name@domain.com).',
+      'form.err_tel_req': 'Enter your number.', 'form.err_tel_bad': 'Invalid number: use the international prefix, e.g. +44 7700 900123.',
+      'calc.eyebrow': 'Free tool', 'calc.title': 'CORE-54 Calculator',
+      'calc.lead': "Enter the data of the prop you're working on: instantly get the SL and TP values to set on Core54 and see how the broker balance changes in both scenarios.",
+      'calc.g1t': 'Your prop', 'calc.g1p': 'Challenge parameters',
+      'calc.balance': 'Starting balance', 'calc.dd': 'Maximum drawdown',
+      'calc.incasso': 'Payout if prop is blown', 'calc.incasso_tip': 'How much the broker collects if the prop hits the maximum drawdown.',
+      'calc.g2t': 'Prop balances', 'calc.g2p': 'Where you are now and where you get at TP or SL',
+      'calc.saldo': 'Current balance', 'calc.tp': 'Balance at TP', 'calc.sl': 'Balance at SL',
+      'calc.reset': '↺ Reset example values',
+      'calc.out_title': 'Set on Core54', 'calc.loss': 'Prop loss', 'calc.gain': 'Prop gain',
+      'calc.rr': 'Risk/reward ratio', 'calc.rr_sub': 'Loss at SL : gain at TP',
+      'calc.broker_title': 'Effect on the broker account',
+      'calc.if_sl': 'If the prop hits SL', 'calc.if_tp': 'If the prop hits TP', 'calc.delta_sub': 'net change in broker balance',
+      'calc.cta_text': 'Want CORE-54 to handle all of this automatically?', 'calc.cta_btn': 'Request access',
+      'footer.disclaimer': '<strong>Disclaimer.</strong> CORE-54 is a software tool provided under a licence of use; it is not a financial intermediary, a bank, an investment firm or a financial adviser, and it provides neither personalised advice nor portfolio management. Leveraged trading involves a high level of risk, including the possibility of losing the invested capital; past results or simulations are no guarantee of future results. Accounts and funds always remain the exclusive property of the user, who is solely responsible for the trades executed.'
+    },
+    de: {
+      'meta.title': 'CORE-54 — Früher Zugang',
+      'meta.desc': 'CORE-54: eine strukturierte Methode für ein zweites Einkommen, mit der Ernsthaftigkeit eines echten Unternehmens. Sieh dir die ersten kostenlosen Lektionen an und beantrage frühen Zugang.',
+      'nav.how': "So funktioniert's", 'nav.video': 'Gratis-Lektionen', 'nav.prices': 'Preise', 'nav.access': 'Zugang',
+      'view.service': 'Service', 'view.calc': 'Rechner',
+      'hero.eyebrow': 'Begrenzte Plätze pro Monat',
+      'hero.title': 'Eine strukturierte, bewährte Methode für ein zweites Einkommen.',
+      'hero.lead': 'Einmal gelernt, braucht die tägliche Verwaltung nur wenige Minuten — gemacht für ein ohnehin volles Leben, nicht um es zu ersetzen.',
+      'hero.cta1': 'Frühen Zugang beantragen', 'hero.cta2': 'Gratis-Lektionen ansehen',
+      'hero.note': 'Zugang nur auf Einladung, jeden Monat in kleinen Gruppen — damit jeder, der dabei ist, echte Aufmerksamkeit bekommt.',
+      'how.title': "So funktioniert's, in drei Schritten",
+      'how.sub': 'Kein Sprung ins Ungewisse: Erst verstehst du die Methode, dann entscheidest du in Ruhe.',
+      'how.s1t': 'Gratis-Lektionen ansehen', 'how.s1p': 'Ein Vorgeschmack auf das, was dich erwartet — ohne Registrierung.',
+      'how.s2t': 'Zugang beantragen', 'how.s2p': 'Schreib uns: Wir antworten mit der Anleitung zur Installation der App und den nächsten Schritten.',
+      'how.s3t': 'In Ruhe lernen, dann starten', 'how.s3p': 'Du erhältst den kompletten Kurs, die Möglichkeit im Demo-Modus zu lernen + eine Stunde 1:1-Coaching, wann immer du willst.',
+      'video.title': 'Die ersten Lektionen, gratis',
+      'video.sub': 'Sieh dir einige Lektionen vorab an und erfahre kostenlos, was dich erwartet.',
+      'video.lang': 'Die Lektionen sind auf Italienisch.',
+      'video.m1': 'Modul 1', 'video.m2': 'Modul 2', 'video.bonus': 'Bonus',
+      'video.v1': "1.1 So funktioniert's, kurz erklärt", 'video.v2': '2.1 Trading-Tools', 'video.v3': '3.8 Die Strategie in Aktion',
+      'prices.title': 'Preise, ohne Überraschungen',
+      'life.tag': 'Lifetime', 'life.once': 'einmalig',
+      'life.sub': 'Alles, was du brauchst, um zu lernen, im Demo-Modus zu starten und anschließend real zu handeln.',
+      'life.l1': 'Kompletter Video-Schulungskurs ohne Ablaufdatum: so oft ansehen, wie du willst',
+      'life.l2': 'Mehrere operative Strategien im Kurs enthalten, die dich Schritt für Schritt beim Erlernen der Methode begleiten',
+      'life.l3': 'CORE-54 App (für iPhone und Android)',
+      'life.l4': 'Stets aktive Engine zur Orderausführung',
+      'life.l5': '1 Stunde 1:1-Coaching, abrufbar wann du willst (innerhalb der ersten zwei Monate nach Aktivierung)',
+      'life.l6': '2 Monate dedizierter VPS-Service inklusive',
+      'life.l7': 'Zugang zur privaten Telegram-Community',
+      'life.note': 'Geld-zurück-Garantie: 100 % innerhalb von 14 Tagen.',
+      'rec.tag': 'Abo', 'rec.month': '/ Monat', 'rec.sub': 'Ab dem dritten Monat aktivierbar.',
+      'rec.l1': 'Verlängerung des dedizierten VPS',
+      'rec.l2': 'Verlängerung der stets aktiven Engine zur Orderausführung',
+      'rec.l3': 'Weitere Mitgliedschaft in der privaten Community',
+      'rec.l4': 'Updates für App und Strategien',
+      'rec.note': 'Um den Service auch nach der im Lifetime enthaltenen Testphase weiter zu nutzen.',
+      'trust.title': 'Was dich erwartet',
+      'trust.1': '<strong>PRIVATSPHÄRE</strong> — deine Trading-Zugangsdaten gehören nur dir: niemand sieht sie, nicht einmal wir.',
+      'trust.2': '<strong>VOLLE KONTROLLE ÜBER DEINE GELDER</strong> — Gelder und Konten bleiben immer deine, unter deiner alleinigen Kontrolle.',
+      'trust.3': '<strong>EIGENSTÄNDIGE STEUERUNG DEINER POSITIONEN</strong> — du entscheidest, wie und wann du in den Markt gehst.',
+      'trust.4': '<strong>SUPPORT</strong> — jeden Monat nur für eine begrenzte Anzahl von Personen offen (max. 5).',
+      'trust.5': '<strong>EINFACHHEIT UND BESTÄNDIGKEIT</strong> — eine wirklich einfache Methode, die aber mit der Sorgfalt eines echten Unternehmens geführt werden will.',
+      'trust.6': '<strong>COMMUNITY</strong> — privat und geschlossen, nur für Mitglieder, zum Austausch und damit du nicht allein bist.',
+      'form.nome': 'Vorname', 'form.cognome': 'Nachname', 'form.email': 'E-Mail', 'form.tel': 'Telefon',
+      'form.tel_hint': 'Mit internationaler Vorwahl, z. B. +49', 'form.platform': 'Plattform', 'form.msg': 'Nachricht',
+      'form.msg_default': 'Hallo! Ich möchte frühen Zugang zu CORE-54 beantragen.',
+      'form.submit': 'Anfrage senden', 'form.sending': 'Wird gesendet...',
+      'form.ok': 'Anfrage erfolgreich gesendet!<br>Wir melden uns in Kürze mit der Anleitung zum Herunterladen der App und zur Registrierung.',
+      'form.err_send': 'Etwas hat nicht funktioniert. Schreib uns direkt an <a href="mailto:info@core54.app">info@core54.app</a>.',
+      'form.err_conn': 'Formular noch nicht verbunden. Schreib uns direkt an <a href="mailto:info@core54.app">info@core54.app</a>.',
+      'form.err_fields': 'Bitte prüfe die rot markierten Felder.',
+      'form.err_nome': 'Gib deinen Vornamen ein.', 'form.err_cognome': 'Gib deinen Nachnamen ein.',
+      'form.err_email_req': 'Gib deine E-Mail ein.', 'form.err_email_bad': 'Ungültige E-Mail (z. B. name@domain.de).',
+      'form.err_tel_req': 'Gib deine Nummer ein.', 'form.err_tel_bad': 'Ungültige Nummer: Verwende die internationale Vorwahl, z. B. +49 151 23456789.',
+      'calc.eyebrow': 'Kostenloses Tool', 'calc.title': 'CORE-54 Rechner',
+      'calc.lead': 'Gib die Daten der Prop ein, an der du arbeitest: Du erhältst sofort die SL- und TP-Werte für Core54 und siehst, wie sich der Broker-Saldo in beiden Szenarien ändert.',
+      'calc.g1t': 'Deine Prop', 'calc.g1p': 'Parameter der Challenge',
+      'calc.balance': 'Startkapital', 'calc.dd': 'Maximaler Drawdown',
+      'calc.incasso': 'Ertrag bei verlorener Prop', 'calc.incasso_tip': 'Wie viel der Broker einnimmt, wenn die Prop den maximalen Drawdown erreicht.',
+      'calc.g2t': 'Salden der Prop', 'calc.g2p': 'Wo du jetzt stehst und wo du bei TP oder SL landest',
+      'calc.saldo': 'Aktueller Saldo', 'calc.tp': 'Saldo bei TP', 'calc.sl': 'Saldo bei SL',
+      'calc.reset': '↺ Beispielwerte wiederherstellen',
+      'calc.out_title': 'In Core54 einstellen', 'calc.loss': 'Prop-Verlust', 'calc.gain': 'Prop-Gewinn',
+      'calc.rr': 'Chance-Risiko-Verhältnis', 'calc.rr_sub': 'Verlust bei SL : Gewinn bei TP',
+      'calc.broker_title': 'Auswirkung auf das Broker-Konto',
+      'calc.if_sl': 'Wenn die Prop SL erreicht', 'calc.if_tp': 'Wenn die Prop TP erreicht', 'calc.delta_sub': 'Nettoveränderung des Broker-Saldos',
+      'calc.cta_text': 'Soll CORE-54 das alles automatisch für dich erledigen?', 'calc.cta_btn': 'Zugang beantragen',
+      'footer.disclaimer': '<strong>Hinweis.</strong> CORE-54 ist ein Software-Tool, das unter einer Nutzungslizenz bereitgestellt wird; es ist weder ein Finanzintermediär noch eine Bank, eine Wertpapierfirma oder ein Finanzberater und erbringt weder persönliche Anlageberatung noch Vermögensverwaltung. Der Handel mit Hebel ist mit einem hohen Risiko verbunden, einschließlich der Möglichkeit, das eingesetzte Kapital zu verlieren; vergangene Ergebnisse oder Simulationen sind keine Garantie für zukünftige Ergebnisse. Konten und Gelder bleiben stets im ausschließlichen Eigentum des Nutzers, der allein für die ausgeführten Geschäfte verantwortlich ist.'
+    },
+    es: {
+      'meta.title': 'CORE-54 — Acceso anticipado',
+      'meta.desc': 'CORE-54: un método estructurado para construir un segundo ingreso, con la seriedad de un negocio real. Mira las primeras lecciones gratuitas y solicita el acceso anticipado.',
+      'nav.how': 'Cómo funciona', 'nav.video': 'Lecciones gratis', 'nav.prices': 'Precios', 'nav.access': 'Acceso',
+      'view.service': 'Servicio', 'view.calc': 'Calculadora',
+      'hero.eyebrow': 'Plazas limitadas cada mes',
+      'hero.title': 'Un método estructurado y probado para construir un segundo ingreso.',
+      'hero.lead': 'Una vez aprendido, la gestión diaria solo requiere unos minutos — pensado para encajar en una vida ya llena de compromisos, no para sustituirla.',
+      'hero.cta1': 'Solicita el acceso anticipado', 'hero.cta2': 'Mira las lecciones gratuitas',
+      'hero.note': 'El acceso es por invitación, en grupos pequeños cada mes — así quien entra recibe atención de verdad.',
+      'how.title': 'Cómo funciona, en tres pasos',
+      'how.sub': 'Sin saltos al vacío: primero entiendes el método, luego decides con calma.',
+      'how.s1t': 'Ves las lecciones gratuitas', 'how.s1p': 'Una muestra para entender qué puedes esperar, sin registro.',
+      'how.s2t': 'Solicitas el acceso', 'how.s2p': 'Escríbenos: te respondemos con las instrucciones para instalar la app y los pasos siguientes.',
+      'how.s3t': 'Aprendes con calma y luego empiezas', 'how.s3p': 'Recibirás el curso completo y la posibilidad de aprender en Demo + una hora de coaching 1:1 cuando quieras.',
+      'video.title': 'Las primeras lecciones, gratis',
+      'video.sub': 'Mira algunas lecciones de muestra para ver lo que te espera, gratis.',
+      'video.lang': 'Las lecciones están en italiano.',
+      'video.m1': 'Módulo 1', 'video.m2': 'Módulo 2', 'video.bonus': 'Bonus',
+      'video.v1': '1.1 Cómo funciona, en resumen', 'video.v2': '2.1 Herramientas de trading', 'video.v3': '3.8 La estrategia en acción',
+      'prices.title': 'Precios, sin sorpresas',
+      'life.tag': 'Lifetime', 'life.once': 'pago único',
+      'life.sub': 'Incluye todo lo necesario para aprender, empezar en demo y después operar en real.',
+      'life.l1': 'Videocurso de formación completo, sin caducidad: lo vuelves a ver todas las veces que quieras',
+      'life.l2': 'Varias estrategias operativas incluidas en el curso, para acompañarte paso a paso en el aprendizaje del método',
+      'life.l3': 'App CORE-54 (para iPhone y Android)',
+      'life.l4': 'Motor de ejecución de operaciones siempre activo',
+      'life.l5': '1 hora de coaching 1:1, para solicitar cuando quieras (dentro de los dos primeros meses desde la activación)',
+      'life.l6': '2 meses de servicio VPS dedicado incluidos',
+      'life.l7': 'Acceso a la comunidad privada en Telegram',
+      'life.note': 'Garantía de devolución: 100% en 14 días.',
+      'rec.tag': 'Recurrente', 'rec.month': '/ mes', 'rec.sub': 'Activable a partir del tercer mes.',
+      'rec.l1': 'Renovación del uso del VPS dedicado',
+      'rec.l2': 'Renovación del motor de ejecución de operaciones siempre activo',
+      'rec.l3': 'Permanencia en la comunidad privada',
+      'rec.l4': 'Actualizaciones de la app y de las estrategias',
+      'rec.note': 'Para seguir usando el servicio después del periodo de prueba incluido en Lifetime.',
+      'trust.title': 'Qué puedes esperar',
+      'trust.1': '<strong>PRIVACIDAD</strong> — tus credenciales de trading son solo tuyas: nadie las ve, ni siquiera nosotros.',
+      'trust.2': '<strong>CONTROL TOTAL DE TUS FONDOS</strong> — los fondos y las cuentas siguen siendo siempre tuyos, bajo tu control exclusivo.',
+      'trust.3': '<strong>GESTIÓN AUTÓNOMA DE TUS POSICIONES</strong> — tú decides cómo y cuándo entrar al mercado.',
+      'trust.4': '<strong>SOPORTE</strong> — plazas abiertas a un número limitado de personas cada mes (máx. 5).',
+      'trust.5': '<strong>SENCILLEZ Y CONSTANCIA</strong> — un método realmente sencillo, pero que se gestiona con la atención de un negocio real.',
+      'trust.6': '<strong>COMUNIDAD</strong> — privada y cerrada, solo para quien entra, para compartir y no estar solo.',
+      'form.nome': 'Nombre', 'form.cognome': 'Apellido', 'form.email': 'Email', 'form.tel': 'Teléfono',
+      'form.tel_hint': 'Con prefijo internacional, p. ej. +34', 'form.platform': 'Plataforma', 'form.msg': 'Mensaje',
+      'form.msg_default': '¡Hola! Me gustaría solicitar el acceso anticipado a CORE-54.',
+      'form.submit': 'Enviar solicitud', 'form.sending': 'Enviando...',
+      'form.ok': '¡Solicitud enviada correctamente!<br>Te contactaremos en breve con las instrucciones para descargar la App y registrarte.',
+      'form.err_send': 'Algo no ha funcionado. Escríbenos directamente a <a href="mailto:info@core54.app">info@core54.app</a>.',
+      'form.err_conn': 'Formulario aún no conectado. Escríbenos directamente a <a href="mailto:info@core54.app">info@core54.app</a>.',
+      'form.err_fields': 'Revisa los campos marcados en rojo.',
+      'form.err_nome': 'Introduce tu nombre.', 'form.err_cognome': 'Introduce tu apellido.',
+      'form.err_email_req': 'Introduce tu email.', 'form.err_email_bad': 'Email no válido (p. ej. nombre@dominio.es).',
+      'form.err_tel_req': 'Introduce tu número.', 'form.err_tel_bad': 'Número no válido: usa el prefijo internacional, p. ej. +34 612 345 678.',
+      'calc.eyebrow': 'Herramienta gratuita', 'calc.title': 'Calculadora CORE-54',
+      'calc.lead': 'Introduce los datos de la prop con la que trabajas: obtén al instante los valores de SL y TP para configurar en Core54 y mira cómo cambia el saldo del bróker en ambos escenarios.',
+      'calc.g1t': 'Tu prop', 'calc.g1p': 'Parámetros del desafío',
+      'calc.balance': 'Balance inicial', 'calc.dd': 'Drawdown máximo',
+      'calc.incasso': 'Cobro si la prop se quema', 'calc.incasso_tip': 'Cuánto cobra el bróker si la prop llega al drawdown máximo.',
+      'calc.g2t': 'Saldos de la prop', 'calc.g2p': 'Dónde estás ahora y dónde llegas en TP o SL',
+      'calc.saldo': 'Saldo actual', 'calc.tp': 'Saldo en TP', 'calc.sl': 'Saldo en SL',
+      'calc.reset': '↺ Restablecer valores de ejemplo',
+      'calc.out_title': 'Configurar en Core54', 'calc.loss': 'Pérdida prop', 'calc.gain': 'Ganancia prop',
+      'calc.rr': 'Relación riesgo/beneficio', 'calc.rr_sub': 'Pérdida en SL : ganancia en TP',
+      'calc.broker_title': 'Efecto en la cuenta del bróker',
+      'calc.if_sl': 'Si la prop llega a SL', 'calc.if_tp': 'Si la prop llega a TP', 'calc.delta_sub': 'variación neta del saldo del bróker',
+      'calc.cta_text': '¿Quieres que CORE-54 lo gestione todo automáticamente?', 'calc.cta_btn': 'Solicita el acceso',
+      'footer.disclaimer': '<strong>Advertencia.</strong> CORE-54 es una herramienta de software cedida bajo licencia de uso; no es un intermediario financiero, un banco, una empresa de servicios de inversión ni un asesor financiero, y no presta asesoramiento personalizado ni gestión de carteras. El trading con apalancamiento conlleva un riesgo elevado, incluida la posibilidad de perder el capital invertido; los resultados pasados o las simulaciones no garantizan resultados futuros. Las cuentas y los fondos siguen siendo siempre de titularidad exclusiva del usuario, que es el único responsable de las operaciones ejecutadas.'
+    },
+    pl: {
+      'meta.title': 'CORE-54 — Wczesny dostęp',
+      'meta.desc': 'CORE-54: uporządkowana metoda budowania drugiego źródła dochodu, z powagą prawdziwego biznesu. Obejrzyj pierwsze darmowe lekcje i poproś o wczesny dostęp.',
+      'nav.how': 'Jak to działa', 'nav.video': 'Darmowe lekcje', 'nav.prices': 'Cennik', 'nav.access': 'Dostęp',
+      'view.service': 'Usługa', 'view.calc': 'Kalkulator',
+      'hero.eyebrow': 'Ograniczona liczba miejsc co miesiąc',
+      'hero.title': 'Uporządkowana, sprawdzona metoda budowania drugiego źródła dochodu.',
+      'hero.lead': 'Gdy ją opanujesz, codzienna obsługa zajmuje tylko kilka minut — stworzona, by zmieścić się w już pełnym obowiązków życiu, a nie je zastąpić.',
+      'hero.cta1': 'Poproś o wczesny dostęp', 'hero.cta2': 'Obejrzyj darmowe lekcje',
+      'hero.note': 'Dostęp tylko na zaproszenie, w małych grupach co miesiąc — dzięki temu każdy, kto dołącza, dostaje prawdziwą uwagę.',
+      'how.title': 'Jak to działa, w trzech krokach',
+      'how.sub': 'Bez skoku w nieznane: najpierw rozumiesz metodę, potem spokojnie decydujesz.',
+      'how.s1t': 'Oglądasz darmowe lekcje', 'how.s1p': 'Przedsmak tego, czego możesz się spodziewać, bez rejestracji.',
+      'how.s2t': 'Prosisz o dostęp', 'how.s2p': 'Napisz do nas: odpowiemy z instrukcją instalacji aplikacji i kolejnymi krokami.',
+      'how.s3t': 'Uczysz się spokojnie, potem startujesz', 'how.s3p': 'Otrzymasz pełny kurs i możliwość nauki w trybie Demo + godzinę coachingu 1:1, kiedy zechcesz.',
+      'video.title': 'Pierwsze lekcje za darmo',
+      'video.sub': 'Obejrzyj kilka lekcji próbnych i zobacz za darmo, co na ciebie czeka.',
+      'video.lang': 'Lekcje są w języku włoskim.',
+      'video.m1': 'Moduł 1', 'video.m2': 'Moduł 2', 'video.bonus': 'Bonus',
+      'video.v1': '1.1 Jak to działa, w skrócie', 'video.v2': '2.1 Narzędzia tradingowe', 'video.v3': '3.8 Strategia w praktyce',
+      'prices.title': 'Cennik bez niespodzianek',
+      'life.tag': 'Lifetime', 'life.once': 'jednorazowo',
+      'life.sub': 'Wszystko, czego potrzebujesz, by się nauczyć, zacząć na demo, a następnie handlować na realnym koncie.',
+      'life.l1': 'Pełny kurs wideo bez daty ważności: oglądasz go tyle razy, ile chcesz',
+      'life.l2': 'Kilka strategii operacyjnych w kursie, które krok po kroku prowadzą cię przez naukę metody',
+      'life.l3': 'Aplikacja CORE-54 (na iPhone i Androida)',
+      'life.l4': 'Stale aktywny silnik realizacji zleceń',
+      'life.l5': '1 godzina coachingu 1:1, do wykorzystania kiedy chcesz (w ciągu pierwszych dwóch miesięcy od aktywacji)',
+      'life.l6': '2 miesiące dedykowanego serwera VPS w cenie',
+      'life.l7': 'Dostęp do prywatnej społeczności na Telegramie',
+      'life.note': 'Gwarancja zwrotu pieniędzy: 100% w ciągu 14 dni.',
+      'rec.tag': 'Abonament', 'rec.month': '/ mies.', 'rec.sub': 'Do aktywowania od trzeciego miesiąca.',
+      'rec.l1': 'Odnowienie dedykowanego serwera VPS',
+      'rec.l2': 'Odnowienie stale aktywnego silnika realizacji zleceń',
+      'rec.l3': 'Dalsze członkostwo w prywatnej społeczności',
+      'rec.l4': 'Aktualizacje aplikacji i strategii',
+      'rec.note': 'Aby dalej korzystać z usługi po okresie próbnym zawartym w Lifetime.',
+      'trust.title': 'Czego możesz się spodziewać',
+      'trust.1': '<strong>PRYWATNOŚĆ</strong> — twoje dane logowania do tradingu należą tylko do ciebie: nikt ich nie widzi, nawet my.',
+      'trust.2': '<strong>PEŁNA KONTROLA NAD ŚRODKAMI</strong> — środki i konta zawsze pozostają twoje, pod twoją wyłączną kontrolą.',
+      'trust.3': '<strong>SAMODZIELNE ZARZĄDZANIE POZYCJAMI</strong> — to ty decydujesz, jak i kiedy wejść na rynek.',
+      'trust.4': '<strong>WSPARCIE</strong> — miejsca dla ograniczonej liczby osób każdego miesiąca (maks. 5).',
+      'trust.5': '<strong>PROSTOTA I SYSTEMATYCZNOŚĆ</strong> — naprawdę prosta metoda, ale prowadzona z dbałością prawdziwego biznesu.',
+      'trust.6': '<strong>SPOŁECZNOŚĆ</strong> — prywatna i zamknięta, tylko dla uczestników, by wymieniać się doświadczeniami i nie być samemu.',
+      'form.nome': 'Imię', 'form.cognome': 'Nazwisko', 'form.email': 'E-mail', 'form.tel': 'Telefon',
+      'form.tel_hint': 'Z numerem kierunkowym kraju, np. +48', 'form.platform': 'Platforma', 'form.msg': 'Wiadomość',
+      'form.msg_default': 'Cześć! Chciałbym poprosić o wczesny dostęp do CORE-54.',
+      'form.submit': 'Wyślij prośbę', 'form.sending': 'Wysyłanie...',
+      'form.ok': 'Prośba wysłana pomyślnie!<br>Wkrótce skontaktujemy się z instrukcją pobrania aplikacji i rejestracji.',
+      'form.err_send': 'Coś poszło nie tak. Napisz do nas bezpośrednio na <a href="mailto:info@core54.app">info@core54.app</a>.',
+      'form.err_conn': 'Formularz nie jest jeszcze podłączony. Napisz do nas bezpośrednio na <a href="mailto:info@core54.app">info@core54.app</a>.',
+      'form.err_fields': 'Sprawdź pola zaznaczone na czerwono.',
+      'form.err_nome': 'Podaj swoje imię.', 'form.err_cognome': 'Podaj swoje nazwisko.',
+      'form.err_email_req': 'Podaj swój e-mail.', 'form.err_email_bad': 'Nieprawidłowy e-mail (np. imie@domena.pl).',
+      'form.err_tel_req': 'Podaj swój numer.', 'form.err_tel_bad': 'Nieprawidłowy numer: użyj numeru kierunkowego kraju, np. +48 512 345 678.',
+      'calc.eyebrow': 'Darmowe narzędzie', 'calc.title': 'Kalkulator CORE-54',
+      'calc.lead': 'Wpisz dane propa, nad którym pracujesz: od razu otrzymasz wartości SL i TP do ustawienia w Core54 i zobaczysz, jak zmienia się saldo u brokera w obu scenariuszach.',
+      'calc.g1t': 'Twój prop', 'calc.g1p': 'Parametry wyzwania',
+      'calc.balance': 'Saldo początkowe', 'calc.dd': 'Maksymalny drawdown',
+      'calc.incasso': 'Wpływ przy spalonym propie', 'calc.incasso_tip': 'Ile zarabia broker, gdy prop osiągnie maksymalny drawdown.',
+      'calc.g2t': 'Salda propa', 'calc.g2p': 'Gdzie jesteś teraz i gdzie dojdziesz przy TP lub SL',
+      'calc.saldo': 'Saldo bieżące', 'calc.tp': 'Saldo przy TP', 'calc.sl': 'Saldo przy SL',
+      'calc.reset': '↺ Przywróć przykładowe wartości',
+      'calc.out_title': 'Do ustawienia w Core54', 'calc.loss': 'Strata propa', 'calc.gain': 'Zysk propa',
+      'calc.rr': 'Stosunek ryzyka do zysku', 'calc.rr_sub': 'Strata przy SL : zysk przy TP',
+      'calc.broker_title': 'Wpływ na konto u brokera',
+      'calc.if_sl': 'Gdy prop dojdzie do SL', 'calc.if_tp': 'Gdy prop dojdzie do TP', 'calc.delta_sub': 'zmiana netto salda u brokera',
+      'calc.cta_text': 'Chcesz, żeby CORE-54 robił to wszystko automatycznie?', 'calc.cta_btn': 'Poproś o dostęp',
+      'footer.disclaimer': '<strong>Zastrzeżenie.</strong> CORE-54 to narzędzie programowe udostępniane na podstawie licencji; nie jest pośrednikiem finansowym, bankiem, firmą inwestycyjną ani doradcą finansowym i nie świadczy doradztwa indywidualnego ani zarządzania portfelem. Handel z dźwignią wiąże się z wysokim ryzykiem, w tym możliwością utraty zainwestowanego kapitału; wyniki historyczne lub symulacje nie gwarantują przyszłych wyników. Konta i środki zawsze pozostają wyłączną własnością użytkownika, który ponosi wyłączną odpowiedzialność za wykonane transakcje.'
+    }
+  };
+  var LOCALE = { it: 'it-IT', en: 'en-US', de: 'de-DE', es: 'es-ES', pl: 'pl-PL' };
+
+
+  // ═══ LINGUA ═══
+  var LANGS = ['it','en','de','es','pl'];
+  var lang = 'it';
+  function t(k){ var d = I18N[lang] || I18N.it; return (d[k] !== undefined) ? d[k] : I18N.it[k]; }
+  function isDefaultMsg(v){ return LANGS.some(function(l){ return I18N[l]['form.msg_default'] === v; }); }
+
+  function applyLang(l){
+    lang = LANGS.indexOf(l) >= 0 ? l : 'it';
+    document.documentElement.lang = lang;
+    document.title = t('meta.title');
+    var md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute('content', t('meta.desc'));
+    document.querySelectorAll('[data-i18n]').forEach(function(el){ el.textContent = t(el.getAttribute('data-i18n')); });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){ el.innerHTML = t(el.getAttribute('data-i18n-html')); });
+    document.querySelectorAll('[data-i18n-title]').forEach(function(el){ el.title = t(el.getAttribute('data-i18n-title')); });
+    var vl = $('video-lang'); vl.hidden = !t('video.lang');
+    var msg = $('f-messaggio'); if (!msg.value || isDefaultMsg(msg.value)) msg.value = t('form.msg_default');
+    $('lang-select').value = lang;
+    try { localStorage.setItem('core54_lang', lang); } catch(e) {}
+    // rinfresca errori/valori già mostrati nella nuova lingua
+    if (typeof calcola === 'function') calcola();
+    if (accessMsg.className === 'form-msg ok') accessMsg.innerHTML = t('form.ok');
+    if (accessMsg.className === 'form-msg err' && LANGS.some(function(l){ return I18N[l]['form.err_fields'] === accessMsg.textContent; })) accessMsg.textContent = t('form.err_fields');
+    ['nome','cognome','email','telefono'].forEach(function(id){ if ($('err-' + id).classList.contains('show')) validaCampi(leggiPayload()); });
+  }
+
+  $('year').textContent = new Date().getFullYear();
+
+  // ═══ FORM "RICHIEDI L'ACCESSO" ═══
+  // Chiave "publishable" (anon) del progetto Supabase — NON è segreta, è fatta per stare nel codice pubblico.
   var SUPABASE_ANON_KEY = 'sb_publishable_T4WiIXTIbQjtSh7IQc0pVQ_Vgg7_gPp';
   var ACCESS_FUNCTION_URL = 'https://ppyyvmyhprxahiwijyeu.supabase.co/functions/v1/clever-task';
-  // ────────────────────────────────────────────────────────────────────────────
 
-  var accessForm = document.getElementById('access-form');
-  var accessMsg = document.getElementById('access-msg');
-  var accessSubmit = document.getElementById('access-submit');
-
+  var accessForm = $('access-form');
+  var accessMsg = $('access-msg');
+  var accessSubmit = $('access-submit');
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   // Prefisso internazionale obbligatorio (+ seguito da cifre, spazi ammessi), lunghezza plausibile.
   var TEL_RE = /^\+[0-9][0-9\s]{6,16}$/;
 
   function setFieldError(id, msg){
-    var input = document.getElementById('f-' + id);
-    var err = document.getElementById('err-' + id);
-    if (msg) {
-      input.classList.add('invalid');
-      err.textContent = msg;
-      err.classList.add('show');
-    } else {
-      input.classList.remove('invalid');
-      err.textContent = '';
-      err.classList.remove('show');
-    }
+    var input = $('f-' + id), err = $('err-' + id);
+    if (msg) { input.classList.add('invalid'); err.textContent = msg; err.classList.add('show'); }
+    else { input.classList.remove('invalid'); err.textContent = ''; err.classList.remove('show'); }
   }
-
-  // Pulisce l'errore del campo appena l'utente ricomincia a correggerlo.
   ['nome', 'cognome', 'email', 'telefono'].forEach(function(id){
-    document.getElementById('f-' + id).addEventListener('input', function(){ setFieldError(id, ''); });
+    $('f-' + id).addEventListener('input', function(){ setFieldError(id, ''); });
   });
-
+  function leggiPayload(){
+    return {
+      nome: $('f-nome').value.trim(),
+      cognome: $('f-cognome').value.trim(),
+      email: $('f-email').value.trim(),
+      telefono: $('f-telefono').value.trim(),
+      piattaforma: $('f-piattaforma').value,
+      messaggio: $('f-messaggio').value.trim(),
+      sito_web: $('f-sito-web').value // honeypot, resta vuoto per un utente reale
+    };
+  }
   // Ritorna il primo campo non valido (o null se tutto ok), impostando i messaggi sotto ai campi.
-  function validaCampi(payload){
-    setFieldError('nome', payload.nome ? '' : 'Inserisci il tuo nome.');
-    setFieldError('cognome', payload.cognome ? '' : 'Inserisci il tuo cognome.');
-    setFieldError('email', !payload.email ? 'Inserisci la tua email.' : (!EMAIL_RE.test(payload.email) ? 'Email non valida (es. nome@dominio.it).' : ''));
-    setFieldError('telefono', !payload.telefono ? 'Inserisci il tuo numero.' : (!TEL_RE.test(payload.telefono) ? 'Numero non valido: usa il prefisso internazionale, es. +39 333 1234567.' : ''));
-
+  function validaCampi(p){
+    setFieldError('nome', p.nome ? '' : t('form.err_nome'));
+    setFieldError('cognome', p.cognome ? '' : t('form.err_cognome'));
+    setFieldError('email', !p.email ? t('form.err_email_req') : (!EMAIL_RE.test(p.email) ? t('form.err_email_bad') : ''));
+    setFieldError('telefono', !p.telefono ? t('form.err_tel_req') : (!TEL_RE.test(p.telefono) ? t('form.err_tel_bad') : ''));
     var ordine = ['nome', 'cognome', 'email', 'telefono'];
     for (var i = 0; i < ordine.length; i++) {
-      if (document.getElementById('err-' + ordine[i]).classList.contains('show')) {
-        return document.getElementById('f-' + ordine[i]);
-      }
+      if ($('err-' + ordine[i]).classList.contains('show')) return $('f-' + ordine[i]);
     }
     return null;
   }
@@ -452,41 +1035,24 @@
     e.preventDefault();
     accessMsg.textContent = '';
     accessMsg.className = 'form-msg';
-
-    var payload = {
-      nome: document.getElementById('f-nome').value.trim(),
-      cognome: document.getElementById('f-cognome').value.trim(),
-      email: document.getElementById('f-email').value.trim(),
-      telefono: document.getElementById('f-telefono').value.trim(),
-      piattaforma: document.getElementById('f-piattaforma').value,
-      messaggio: document.getElementById('f-messaggio').value.trim(),
-      sito_web: document.getElementById('f-sito-web').value // honeypot, resta vuoto per un utente reale
-    };
-
+    var payload = leggiPayload();
     var primoNonValido = validaCampi(payload);
     if (primoNonValido) {
       primoNonValido.focus();
-      accessMsg.textContent = 'Controlla i campi evidenziati in rosso.';
+      accessMsg.textContent = t('form.err_fields');
       accessMsg.className = 'form-msg err';
       return;
     }
-
     if (SUPABASE_ANON_KEY.indexOf('INCOLLA_QUI') === 0) {
-      accessMsg.innerHTML = 'Modulo non ancora collegato. Scrivici direttamente a <a href="mailto:info@core54.app">info@core54.app</a>.';
+      accessMsg.innerHTML = t('form.err_conn');
       accessMsg.className = 'form-msg err';
       return;
     }
-
     accessSubmit.disabled = true;
-    accessSubmit.textContent = 'Invio in corso...';
-
+    accessSubmit.textContent = t('form.sending');
     fetch(ACCESS_FUNCTION_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-        'apikey': SUPABASE_ANON_KEY
-      },
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY, 'apikey': SUPABASE_ANON_KEY },
       body: JSON.stringify(payload)
     })
       .then(function(res){ return res.json().then(function(data){ return { ok: res.ok, data: data }; }); })
@@ -494,7 +1060,7 @@
         if (result.ok && result.data && result.data.ok) {
           accessForm.reset();
           accessForm.style.display = 'none';
-          accessMsg.innerHTML = 'Richiesta inviata correttamente!<br>Ti contatteremo a breve con le istruzioni per scaricare l\'App e procedere alla registrazione.';
+          accessMsg.innerHTML = t('form.ok');
           accessMsg.className = 'form-msg ok';
           accessMsg.style.display = 'block';
         } else {
@@ -502,18 +1068,18 @@
         }
       })
       .catch(function(){
-        accessMsg.innerHTML = 'Qualcosa non ha funzionato. Scrivici direttamente a <a href="mailto:info@core54.app">info@core54.app</a>.';
+        accessMsg.innerHTML = t('form.err_send');
         accessMsg.className = 'form-msg err';
       })
       .finally(function(){
         accessSubmit.disabled = false;
-        accessSubmit.textContent = 'Invia richiesta';
+        accessSubmit.textContent = t('form.submit');
       });
   });
 
+  // ═══ VIDEO (Bunny HLS) ═══
   var BUNNY_HOST = 'vz-0bb944b6-412.b-cdn.net';
-  var hlsLoaded = false, hlsLoading = false, hlsCallbacks = [];
-
+  var hlsLoading = false, hlsCallbacks = [];
   function loadHls(cb){
     if (window.Hls) { cb(); return; }
     hlsCallbacks.push(cb);
@@ -521,29 +1087,17 @@
     hlsLoading = true;
     var s = document.createElement('script');
     s.src = 'https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js';
-    s.onload = function(){ hlsLoaded = true; hlsCallbacks.forEach(function(f){ f(); }); hlsCallbacks = []; };
+    s.onload = function(){ hlsCallbacks.forEach(function(f){ f(); }); hlsCallbacks = []; };
     document.head.appendChild(s);
   }
-
   document.querySelectorAll('.video-card').forEach(function(card){
-    var btn = card.querySelector('.play-btn');
-    btn.addEventListener('click', function(){
+    card.querySelector('.play-btn').addEventListener('click', function(){
       var videoId = card.getAttribute('data-video-id');
       var frame = card.querySelector('.video-frame');
       var src = 'https://' + BUNNY_HOST + '/' + videoId + '/playlist.m3u8';
-
       var video = document.createElement('video');
-      video.controls = true;
-      video.autoplay = true;
-      video.playsInline = true;
-
-      function playNative(){
-        video.src = src;
-        frame.innerHTML = '';
-        frame.appendChild(video);
-        video.play().catch(function(){});
-      }
-
+      video.controls = true; video.autoplay = true; video.playsInline = true;
+      function playNative(){ video.src = src; frame.innerHTML = ''; frame.appendChild(video); video.play().catch(function(){}); }
       if (video.canPlayType('application/vnd.apple.mpegurl')) {
         playNative();
       } else {
@@ -551,17 +1105,111 @@
           frame.innerHTML = '';
           frame.appendChild(video);
           if (window.Hls && window.Hls.isSupported()) {
-            var hls = new window.Hls();
-            hls.loadSource(src);
-            hls.attachMedia(video);
-            video.play().catch(function(){});
-          } else {
-            playNative();
-          }
+            var hls = new window.Hls(); hls.loadSource(src); hls.attachMedia(video); video.play().catch(function(){});
+          } else { playNative(); }
         });
       }
     });
   });
+
+  // ═══ SCHEDE: #calcolatore apre il calcolatore, qualunque altro hash resta sul Servizio ═══
+  var viewServizio = $('view-servizio'), viewCalc = $('view-calcolatore');
+  var lastIsCalc = null, firstRun = true;
+  function route(){
+    var isCalc = location.hash === '#calcolatore';
+    viewServizio.hidden = isCalc;
+    viewCalc.hidden = !isCalc;
+    document.querySelectorAll('.view-switch a').forEach(function(a){
+      a.classList.toggle('on', (a.getAttribute('data-view') === 'calcolatore') === isCalc);
+    });
+    $('main-nav').style.visibility = isCalc ? 'hidden' : 'visible';
+    // Ancora interna alla stessa scheda: ci pensa il browser (scroll morbido).
+    // Cambio di scheda: salto istantaneo, eseguito dopo il cambio di layout.
+    var changed = isCalc !== lastIsCalc;
+    lastIsCalc = isCalc;
+    if (!changed && !firstRun && location.hash !== '#servizio') return;
+    firstRun = false;
+    var target = !isCalc && location.hash.length > 1 ? document.getElementById(location.hash.slice(1)) : null;
+    requestAnimationFrame(function(){
+      if (target) target.scrollIntoView({ behavior: 'instant' });
+      else window.scrollTo({ top: 0, behavior: changed ? 'instant' : 'smooth' });
+    });
+  }
+  window.addEventListener('hashchange', route);
+
+  // ═══ CALCOLATORE ═══
+  var num = function(v){ return parseFloat(v) || 0; };
+  // Separatori per lingua (migliaia / decimali) — fissi, per avere sempre il raggruppamento anche sotto 10.000
+  var SEP = { it: ['.', ','], de: ['.', ','], es: ['.', ','], en: [',', '.'], pl: [' ', ','] };
+  function fmtNum(n, dec){
+    var sep = SEP[lang] || SEP.it;
+    var parts = Math.abs(n).toFixed(dec).split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, sep[0]);
+    return dec > 0 ? parts[0] + sep[1] + parts[1] : parts[0];
+  }
+  function fmt(n){
+    if (n === null || n === undefined || isNaN(n)) return '—';
+    var s = '$' + fmtNum(n, 2);
+    return (n < 0 && Number(Math.abs(n).toFixed(2)) !== 0) ? '−' + s : s;
+  }
+  function fmt0(n){ return (n < 0 ? '−' : '') + '$' + fmtNum(Math.round(n), 0); }
+  function fmtDelta(v){ return (v >= 0 ? '+' : '−') + fmt(Math.abs(v)); }
+
+  var ids = ['c-balance','c-dd','c-incasso','c-saldo','c-sl','c-tp'];
+
+  function calcola(){
+    var balance = num($('c-balance').value);
+    var dd      = num($('c-dd').value) / 100;
+    var incasso = num($('c-incasso').value);
+    var saldo   = num($('c-saldo').value);
+    var tpVal   = num($('c-tp').value);
+    var slVal   = num($('c-sl').value);
+    var ddVal   = balance * dd;
+
+    // Valori da impostare su Core54
+    var perditaSL  = saldo - slVal;
+    var guadagnoTP = tpVal - saldo;
+
+    // Variazioni saldo broker: l'incasso al DD max scala in proporzione al movimento della prop.
+    // Corrisponde alla formula originale con costo accumulato = 0 e payout = 0 (entrambi rimossi su richiesta).
+    var ratio   = ddVal !== 0 ? incasso / ddVal : 0;
+    var deltaSL = ratio * perditaSL;
+    var deltaTP = -ratio * guadagnoTP;
+
+    $('o-perdita').textContent = fmt(perditaSL);
+    $('o-guadagno').textContent = fmt(guadagnoTP);
+    $('o-dsl').textContent = fmtDelta(deltaSL);
+    $('o-dtp').textContent = fmtDelta(deltaTP);
+    $('o-dsl-box').className = 'calc-row ' + (deltaSL >= 0 ? 'pos' : 'neg');
+    $('o-dtp-box').className = 'calc-row ' + (deltaTP >= 0 ? 'pos' : 'neg');
+
+    // Rapporto rischio/rendimento = 1 : (guadagno a TP / perdita a SL)
+    $('o-rr').textContent = (perditaSL > 0 && guadagnoTP > 0) ? '1 : ' + fmtNum(guadagnoTP / perditaSL, 2) : '—';
+
+    // Barra divisa: segmento rosso = distanza dallo SL, verde = distanza dal TP
+    var dSl = Math.max(0, perditaSL), dTp = Math.max(0, guadagnoTP), tot = dSl + dTp;
+    $('o-seg-sl').style.flexGrow = tot > 0 ? dSl : 1;
+    $('o-seg-tp').style.flexGrow = tot > 0 ? dTp : 1;
+    $('o-sl-lbl').textContent = fmt0(slVal);
+    $('o-saldo-lbl').textContent = fmt0(saldo);
+    $('o-tp-lbl').textContent = fmt0(tpVal);
+  }
+
+  ids.forEach(function(id){ $(id).addEventListener('input', calcola); });
+  $('c-reset').addEventListener('click', function(){
+    ids.forEach(function(id){ $(id).value = $(id).getAttribute('data-def'); });
+    calcola();
+  });
+  ids.forEach(function(id){ $(id).value = $(id).getAttribute('data-def'); });
+
+  // ═══ AVVIO ═══
+  var saved = null;
+  try { saved = localStorage.getItem('core54_lang'); } catch(e) {}
+  var nav = (navigator.language || 'it').slice(0, 2).toLowerCase();
+  $('lang-select').addEventListener('change', function(){ applyLang(this.value); });
+  applyLang(saved || (LANGS.indexOf(nav) >= 0 ? nav : 'it'));
+  route();
+})();
 </script>
 
 </body>
