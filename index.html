@@ -161,116 +161,30 @@
 
   .section-head{max-width:600px; margin-bottom:36px}
 
-  /* ═══ Schede principali: Servizio / Calcolatore ═══ */
-  html{overflow-anchor:none}
-  .view[hidden]{display:none !important}
-  .view-switch{display:inline-flex; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:4px; gap:2px}
-  .view-switch a{text-decoration:none; font-size:13.5px; font-weight:700; color:var(--muted2); padding:7px 16px; border-radius:999px; white-space:nowrap}
-  .view-switch a:hover{color:var(--gold)}
-  .view-switch a.on{background:var(--gold); color:var(--on-gold)}
+  /* ═══ Header: menu + selettore lingua ═══ */
   header .right{display:flex; align-items:center; gap:22px}
-  @media (max-width:860px){ header nav{display:none} }
-  @media (max-width:400px){ .view-switch a{padding:7px 12px; font-size:13px} .logo{font-size:16px} }
-
-  /* ═══ Calcolatore ═══ */
-  .calc-hero{padding:48px 0 8px}
-  .calc-hero h1{font-size:clamp(28px,5vw,40px)}
-  .calc-hero .lead{font-size:17px; max-width:640px}
-  .calc-layout{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:20px; align-items:stretch; padding:28px 0 64px}
-  @media (max-width:820px){ .calc-layout{grid-template-columns:1fr} }
-  .calc-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:26px}
-  .calc-group + .calc-group{margin-top:26px; padding-top:24px; border-top:1px solid var(--line)}
-  .calc-group-head{display:flex; align-items:center; gap:12px; margin-bottom:18px}
-  .calc-group-head .n{width:30px; height:30px; border-radius:9px; background:var(--gold); color:var(--on-gold);
-    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex:0 0 auto}
-  .calc-group-head h3{font-size:16px; margin:0}
-  .calc-group-head p{font-size:12.5px; color:var(--muted); margin:2px 0 0}
-  .calc-fields{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:end}
-  @media (max-width:480px){ .calc-fields{grid-template-columns:1fr} }
-  .calc-f label{display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--muted2); margin-bottom:6px; min-height:22px}
-  .calc-in{position:relative}
-  .calc-in .u{position:absolute; left:13px; top:50%; transform:translateY(-50%); color:var(--gold); font-weight:700; font-size:14px; pointer-events:none}
-  .calc-in input{width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:12px; color:var(--txt);
-    font-family:inherit; font-size:16px; font-weight:600; padding:12px 13px 12px 32px; font-variant-numeric:tabular-nums}
-  .calc-in input:focus{outline:2px solid var(--gold); outline-offset:1px}
-  .calc-hint{display:block; font-size:11.5px; color:var(--muted); margin-top:5px}
-  .calc-tip{display:inline-flex; align-items:center; justify-content:center; width:17px; height:17px; border-radius:50%;
-    border:1px solid var(--line); font-size:10.5px; color:var(--muted); cursor:help}
-  .calc-reset{margin-top:22px; background:transparent; border:1px solid var(--line); color:var(--muted2); border-radius:999px;
-    font-family:inherit; font-size:13px; font-weight:600; padding:8px 16px; cursor:pointer}
-  .calc-reset:hover{border-color:var(--gold); color:var(--gold)}
-
-  /* Colonne di pari altezza: il pannello "Effetto sul conto broker" si allunga per pareggiare la colonna sinistra */
-  .calc-out{display:flex; flex-direction:column; gap:16px}
-  .calc-out .calc-panel.grow{flex:1 1 auto; display:flex; flex-direction:column}
-  .calc-out .calc-panel.grow .rows{flex:1; display:flex; flex-direction:column; justify-content:center}
-  .calc-card{display:flex; flex-direction:column}
-  .calc-card .calc-reset{align-self:flex-start; margin-top:auto}
-  .calc-card .calc-group:last-of-type{margin-bottom:22px}
-  section[id]{scroll-margin-top:72px}
-  .calc-panel{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:24px}
-  .calc-panel.bot{border-color:var(--gold); background:linear-gradient(180deg, rgba(255,221,0,.07), rgba(255,221,0,0) 70%), var(--surface)}
-  .calc-panel h3{font-size:12.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--gold); margin:0 0 16px}
-  .calc-kpis{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-  @media (max-width:440px){ .calc-kpis{grid-template-columns:1fr} }
-  .calc-kpi{background:var(--surface2); border:1px solid var(--line); border-radius:14px; padding:14px 16px 14px; position:relative; overflow:hidden}
-  .calc-kpi.sl{--c:#EF4444} .calc-kpi.tp{--c:#22C55E}
-  .calc-kpi .k{display:flex; align-items:center; gap:7px; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:6px}
-  .calc-kpi .k i{font-style:normal; font-size:10.5px; font-weight:800; color:#fff; background:var(--c); border-radius:5px; padding:1px 6px; letter-spacing:.04em}
-  .calc-kpi .v{font-size:clamp(22px,3.2vw,27px); font-weight:800; color:var(--txt); font-variant-numeric:tabular-nums; line-height:1.15; word-break:break-word}
-  .calc-split{margin-top:22px}
-  .calc-split .bar{display:flex; align-items:center; gap:4px; height:10px}
-  .calc-split .seg{height:100%; border-radius:3px; min-width:4px; transition:flex-grow .2s}
-  .calc-split .seg.sl{background:#EF4444; border-radius:999px 3px 3px 999px}
-  .calc-split .seg.tp{background:#22C55E; border-radius:3px 999px 999px 3px}
-  .calc-split .mark{flex:0 0 4px; height:22px; border-radius:2px; background:var(--gold)}
-  .calc-split .lbls{display:flex; justify-content:space-between; gap:10px; margin-top:10px; font-size:11.5px; color:var(--muted); font-variant-numeric:tabular-nums; line-height:1.35}
-  .calc-split .lbls b{display:block; color:var(--muted2); font-weight:700; font-size:12.5px}
-  .calc-split .lbls .m{text-align:center; color:var(--gold)} .calc-split .lbls .m b{color:var(--gold)}
-  .calc-split .lbls .r{text-align:right}
-  .calc-rr{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px; padding-top:16px; border-top:1px solid var(--line)}
-  .calc-rr .k{font-size:13.5px; font-weight:600; color:var(--txt)}
-  .calc-rr .k small{display:block; font-size:12px; font-weight:400; color:var(--muted)}
-  .calc-rr .v{font-size:22px; font-weight:800; color:var(--gold); font-variant-numeric:tabular-nums; white-space:nowrap}
-  /* Selettore lingua */
+  @media (max-width:760px){ header nav{display:none} }
   .lang-select{appearance:none; -webkit-appearance:none; background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239CA3AF'/%3E%3C/svg%3E") no-repeat right 10px center;
     border:1px solid var(--line); border-radius:999px; color:var(--muted2); font-family:inherit; font-size:13px; font-weight:700; padding:8px 26px 8px 12px; cursor:pointer}
   .lang-select:hover, .lang-select:focus{border-color:var(--gold); color:var(--gold); outline:none}
   .lang-select option{background:var(--surface); color:var(--txt)}
   .video-lang{font-size:13px; color:var(--muted); margin-top:-20px; margin-bottom:24px}
-  @media (max-width:440px){ header .wrap{padding:12px 14px} header .right{gap:8px} .view-switch a{padding:7px 10px; font-size:12.5px} .lang-select{padding:7px 22px 7px 9px; font-size:12px; background-position:right 7px center} .logo{font-size:15px} .logo .badge{padding:2px 6px} }
-  .calc-row{display:flex; align-items:center; gap:14px; padding:14px 0}
-  .calc-row + .calc-row{border-top:1px solid var(--line)}
-  .calc-row .tag{flex:0 0 auto; width:40px; height:40px; border-radius:11px; display:flex; align-items:center; justify-content:center;
-    font-size:12px; font-weight:800; color:#fff}
-  .calc-row .tag.sl{background:#EF4444} .calc-row .tag.tp{background:#22C55E}
-  .calc-row .k{flex:1; font-size:14px; font-weight:600; color:var(--txt)}
-  .calc-row .k small{display:block; font-size:12px; font-weight:400; color:var(--muted)}
-  .calc-row .v{font-size:21px; font-weight:800; font-variant-numeric:tabular-nums; white-space:nowrap; text-align:right}
-  .calc-row .v small{display:block; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase}
-  .calc-row.pos .v{color:#22C55E} .calc-row.neg .v{color:#EF4444}
-  .calc-cta{grid-column:1/-1; display:flex; align-items:center; justify-content:space-between; gap:16px 24px; flex-wrap:wrap; padding:24px 28px}
-  .calc-cta p{margin:0; font-size:17px; font-weight:700; color:var(--txt)}
-  @media (max-width:560px){ .calc-cta .btn{width:100%} }
-  @media (max-width:360px){ header .right{gap:6px} .view-switch{padding:3px} .view-switch a{padding:6px 8px; font-size:12px} .lang-select{padding:6px 18px 6px 7px; background-position:right 5px center} .logo{gap:4px} }
+  section[id]{scroll-margin-top:72px}
+  @media (max-width:440px){ header .wrap{padding:12px 14px} .lang-select{padding:7px 22px 7px 9px; font-size:12px; background-position:right 7px center} }
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a href="#servizio" class="logo"><span class="badge">CORE</span>54</a>
+    <a href="#top" class="logo"><span class="badge">CORE</span>54</a>
     <div class="right">
-      <nav id="main-nav">
+      <nav>
         <a href="#come-funziona" data-i18n="nav.how">Come funziona</a>
         <a href="#video" data-i18n="nav.video">Lezioni gratuite</a>
         <a href="#prezzi" data-i18n="nav.prices">Prezzi</a>
         <a href="#accesso" data-i18n="nav.access">Accesso</a>
       </nav>
-      <div class="view-switch" role="tablist">
-        <a href="#servizio" data-view="servizio" role="tab" data-i18n="view.service">Servizio</a>
-        <a href="#calcolatore" data-view="calcolatore" role="tab" data-i18n="view.calc">Calcolatore</a>
-      </div>
       <select class="lang-select" id="lang-select" aria-label="Lingua / Language">
         <option value="it">IT</option>
         <option value="en">EN</option>
@@ -282,8 +196,7 @@
   </div>
 </header>
 
-<!-- ═══════════ SCHEDA SERVIZIO (landing) ═══════════ -->
-<main class="view" id="view-servizio">
+<main id="top">
 
   <!-- HERO -->
   <section class="hero">
@@ -487,106 +400,6 @@
 
 </main>
 
-<!-- ═══════════ SCHEDA CALCOLATORE ═══════════ -->
-<main class="view" id="view-calcolatore" hidden>
-  <section class="calc-hero">
-    <div class="wrap">
-      <span class="eyebrow" data-i18n="calc.eyebrow">Strumento gratuito</span>
-      <h1 data-i18n="calc.title">Calcolatore CORE-54</h1>
-      <p class="lead" data-i18n="calc.lead">Inserisci i dati della prop su cui stai lavorando: ottieni subito i valori di SL e TP da impostare su Core54 e vedi come cambia il saldo del broker in entrambi gli scenari.</p>
-    </div>
-  </section>
-
-  <div class="wrap">
-    <div class="calc-layout">
-
-      <!-- INPUT -->
-      <div class="calc-card">
-        <div class="calc-group">
-          <div class="calc-group-head">
-            <span class="n">1</span>
-            <div><h3 data-i18n="calc.g1t">La tua prop</h3><p data-i18n="calc.g1p">Parametri della sfida</p></div>
-          </div>
-          <div class="calc-fields">
-            <div class="calc-f">
-              <label for="c-balance" data-i18n="calc.balance">Balance iniziale</label>
-              <div class="calc-in"><span class="u">$</span><input type="number" id="c-balance" inputmode="decimal" step="1000" data-def="100000"></div>
-            </div>
-            <div class="calc-f">
-              <label for="c-dd" data-i18n="calc.dd">Drawdown massimo</label>
-              <div class="calc-in"><span class="u">%</span><input type="number" id="c-dd" inputmode="decimal" step="0.1" data-def="6"></div>
-            </div>
-            <div class="calc-f" style="grid-column:1/-1">
-              <label for="c-incasso"><span data-i18n="calc.incasso">Incasso prop bruciata</span> <span class="calc-tip" data-i18n-title="calc.incasso_tip" title="Quanto incassa il broker se la prop arriva al drawdown massimo.">?</span></label>
-              <div class="calc-in"><span class="u">$</span><input type="number" id="c-incasso" inputmode="decimal" step="1" data-def="750"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="calc-group">
-          <div class="calc-group-head">
-            <span class="n">2</span>
-            <div><h3 data-i18n="calc.g2t">I saldi della prop</h3><p data-i18n="calc.g2p">Dove sei adesso e dove arrivi a TP o a SL</p></div>
-          </div>
-          <div class="calc-fields">
-            <div class="calc-f">
-              <label for="c-saldo" data-i18n="calc.saldo">Saldo attuale</label>
-              <div class="calc-in"><span class="u">$</span><input type="number" id="c-saldo" inputmode="decimal" step="100" data-def="100000"></div>
-            </div>
-            <div class="calc-f">
-              <label for="c-tp" data-i18n="calc.tp">Saldo a TP</label>
-              <div class="calc-in"><span class="u">$</span><input type="number" id="c-tp" inputmode="decimal" step="100" data-def="103000"></div>
-            </div>
-            <div class="calc-f">
-              <label for="c-sl" data-i18n="calc.sl">Saldo a SL</label>
-              <div class="calc-in"><span class="u">$</span><input type="number" id="c-sl" inputmode="decimal" step="100" data-def="98000"></div>
-            </div>
-          </div>
-        </div>
-
-        <button type="button" class="calc-reset" id="c-reset" data-i18n="calc.reset">↺ Ripristina valori di esempio</button>
-      </div>
-
-      <!-- OUTPUT -->
-      <div class="calc-out">
-        <div class="calc-panel bot">
-          <h3 data-i18n="calc.out_title">Da impostare su Core54</h3>
-          <div class="calc-kpis">
-            <div class="calc-kpi sl"><div class="k"><i>SL</i><span data-i18n="calc.loss">Perdita prop</span></div><div class="v" id="o-perdita">—</div></div>
-            <div class="calc-kpi tp"><div class="k"><i>TP</i><span data-i18n="calc.gain">Guadagno prop</span></div><div class="v" id="o-guadagno">—</div></div>
-          </div>
-          <div class="calc-split" aria-hidden="true">
-            <div class="bar"><span class="seg sl" id="o-seg-sl" style="flex-grow:1"></span><span class="mark"></span><span class="seg tp" id="o-seg-tp" style="flex-grow:1"></span></div>
-            <div class="lbls">
-              <span class="l"><span data-i18n="calc.sl">Saldo a SL</span><b id="o-sl-lbl">—</b></span>
-              <span class="m"><span data-i18n="calc.saldo">Saldo attuale</span><b id="o-saldo-lbl">—</b></span>
-              <span class="r"><span data-i18n="calc.tp">Saldo a TP</span><b id="o-tp-lbl">—</b></span>
-            </div>
-          </div>
-          <div class="calc-rr">
-            <div class="k"><span data-i18n="calc.rr">Rapporto rischio/rendimento</span><small data-i18n="calc.rr_sub">Perdita a SL : guadagno a TP</small></div>
-            <div class="v" id="o-rr">—</div>
-          </div>
-        </div>
-
-        <div class="calc-panel grow">
-          <h3 data-i18n="calc.broker_title">Effetto sul conto broker</h3>
-          <div class="rows">
-          <div class="calc-row" id="o-dsl-box"><span class="tag sl">SL</span><div class="k"><span data-i18n="calc.if_sl">Se la prop va a SL</span><small data-i18n="calc.delta_sub">variazione netta del saldo broker</small></div><div class="v"><span id="o-dsl">—</span></div></div>
-          <div class="calc-row" id="o-dtp-box"><span class="tag tp">TP</span><div class="k"><span data-i18n="calc.if_tp">Se la prop va a TP</span><small data-i18n="calc.delta_sub">variazione netta del saldo broker</small></div><div class="v"><span id="o-dtp">—</span></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CTA a tutta larghezza -->
-      <div class="calc-panel calc-cta">
-        <p data-i18n="calc.cta_text">Vuoi che sia CORE-54 a gestire tutto in automatico?</p>
-        <a class="btn btn-primary" href="#accesso" data-i18n="calc.cta_btn">Richiedi l'accesso</a>
-      </div>
-
-    </div>
-  </div>
-</main>
 
 <footer>
   <div class="wrap">
@@ -610,7 +423,6 @@
       'meta.title': 'CORE-54 — Accesso in anteprima',
       'meta.desc': "CORE-54: un metodo strutturato per costruire una seconda entrata, con la serietà di un business vero. Guarda le prime lezioni gratuite e richiedi l'accesso in anteprima.",
       'nav.how': 'Come funziona', 'nav.video': 'Lezioni gratuite', 'nav.prices': 'Prezzi', 'nav.access': 'Accesso',
-      'view.service': 'Servizio', 'view.calc': 'Calcolatore',
       'hero.eyebrow': 'Posti limitati ogni mese',
       'hero.title': 'Un metodo strutturato e collaudato per costruire una seconda entrata.',
       'hero.lead': 'Una volta imparato, la gestione di tutti i giorni richiede solo pochi minuti — pensato per stare dentro una vita già piena di impegni, non per sostituirla.',
@@ -661,26 +473,12 @@
       'form.err_nome': 'Inserisci il tuo nome.', 'form.err_cognome': 'Inserisci il tuo cognome.',
       'form.err_email_req': 'Inserisci la tua email.', 'form.err_email_bad': 'Email non valida (es. nome@dominio.it).',
       'form.err_tel_req': 'Inserisci il tuo numero.', 'form.err_tel_bad': 'Numero non valido: usa il prefisso internazionale, es. +39 333 1234567.',
-      'calc.eyebrow': 'Strumento gratuito', 'calc.title': 'Calcolatore CORE-54',
-      'calc.lead': 'Inserisci i dati della prop su cui stai lavorando: ottieni subito i valori di SL e TP da impostare su Core54 e vedi come cambia il saldo del broker in entrambi gli scenari.',
-      'calc.g1t': 'La tua prop', 'calc.g1p': 'Parametri della sfida',
-      'calc.balance': 'Balance iniziale', 'calc.dd': 'Drawdown massimo',
-      'calc.incasso': 'Incasso prop bruciata', 'calc.incasso_tip': 'Quanto incassa il broker se la prop arriva al drawdown massimo.',
-      'calc.g2t': 'I saldi della prop', 'calc.g2p': 'Dove sei adesso e dove arrivi a TP o a SL',
-      'calc.saldo': 'Saldo attuale', 'calc.tp': 'Saldo a TP', 'calc.sl': 'Saldo a SL',
-      'calc.reset': '↺ Ripristina valori di esempio',
-      'calc.out_title': 'Da impostare su Core54', 'calc.loss': 'Perdita prop', 'calc.gain': 'Guadagno prop',
-      'calc.rr': 'Rapporto rischio/rendimento', 'calc.rr_sub': 'Perdita a SL : guadagno a TP',
-      'calc.broker_title': 'Effetto sul conto broker',
-      'calc.if_sl': 'Se la prop va a SL', 'calc.if_tp': 'Se la prop va a TP', 'calc.delta_sub': 'variazione netta del saldo broker',
-      'calc.cta_text': 'Vuoi che sia CORE-54 a gestire tutto in automatico?', 'calc.cta_btn': "Richiedi l'accesso",
       'footer.disclaimer': "<strong>Avvertenza.</strong> CORE-54 è uno strumento software concesso in licenza d'uso, non un intermediario finanziario, una banca, una SIM né un consulente finanziario, e non presta consulenza personalizzata né gestione di portafogli. Il trading con leva comporta un rischio elevato, compresa la possibilità di perdere il capitale investito; risultati passati o simulazioni non sono garanzia di risultati futuri. Conti e fondi restano sempre nella titolarità esclusiva dell'utente, che è l'unico responsabile delle operazioni eseguite."
     },
     en: {
       'meta.title': 'CORE-54 — Early access',
       'meta.desc': 'CORE-54: a structured method to build a second income, with the seriousness of a real business. Watch the first free lessons and request early access.',
       'nav.how': 'How it works', 'nav.video': 'Free lessons', 'nav.prices': 'Pricing', 'nav.access': 'Access',
-      'view.service': 'Service', 'view.calc': 'Calculator',
       'hero.eyebrow': 'Limited spots every month',
       'hero.title': 'A structured, proven method to build a second income.',
       'hero.lead': 'Once learned, day-to-day management takes just a few minutes — designed to fit into an already busy life, not to replace it.',
@@ -731,26 +529,12 @@
       'form.err_nome': 'Enter your first name.', 'form.err_cognome': 'Enter your last name.',
       'form.err_email_req': 'Enter your email.', 'form.err_email_bad': 'Invalid email (e.g. name@domain.com).',
       'form.err_tel_req': 'Enter your number.', 'form.err_tel_bad': 'Invalid number: use the international prefix, e.g. +44 7700 900123.',
-      'calc.eyebrow': 'Free tool', 'calc.title': 'CORE-54 Calculator',
-      'calc.lead': "Enter the data of the prop you're working on: instantly get the SL and TP values to set on Core54 and see how the broker balance changes in both scenarios.",
-      'calc.g1t': 'Your prop', 'calc.g1p': 'Challenge parameters',
-      'calc.balance': 'Starting balance', 'calc.dd': 'Maximum drawdown',
-      'calc.incasso': 'Payout if prop is blown', 'calc.incasso_tip': 'How much the broker collects if the prop hits the maximum drawdown.',
-      'calc.g2t': 'Prop balances', 'calc.g2p': 'Where you are now and where you get at TP or SL',
-      'calc.saldo': 'Current balance', 'calc.tp': 'Balance at TP', 'calc.sl': 'Balance at SL',
-      'calc.reset': '↺ Reset example values',
-      'calc.out_title': 'Set on Core54', 'calc.loss': 'Prop loss', 'calc.gain': 'Prop gain',
-      'calc.rr': 'Risk/reward ratio', 'calc.rr_sub': 'Loss at SL : gain at TP',
-      'calc.broker_title': 'Effect on the broker account',
-      'calc.if_sl': 'If the prop hits SL', 'calc.if_tp': 'If the prop hits TP', 'calc.delta_sub': 'net change in broker balance',
-      'calc.cta_text': 'Want CORE-54 to handle all of this automatically?', 'calc.cta_btn': 'Request access',
       'footer.disclaimer': '<strong>Disclaimer.</strong> CORE-54 is a software tool provided under a licence of use; it is not a financial intermediary, a bank, an investment firm or a financial adviser, and it provides neither personalised advice nor portfolio management. Leveraged trading involves a high level of risk, including the possibility of losing the invested capital; past results or simulations are no guarantee of future results. Accounts and funds always remain the exclusive property of the user, who is solely responsible for the trades executed.'
     },
     de: {
       'meta.title': 'CORE-54 — Früher Zugang',
       'meta.desc': 'CORE-54: eine strukturierte Methode für ein zweites Einkommen, mit der Ernsthaftigkeit eines echten Unternehmens. Sieh dir die ersten kostenlosen Lektionen an und beantrage frühen Zugang.',
       'nav.how': "So funktioniert's", 'nav.video': 'Gratis-Lektionen', 'nav.prices': 'Preise', 'nav.access': 'Zugang',
-      'view.service': 'Service', 'view.calc': 'Rechner',
       'hero.eyebrow': 'Begrenzte Plätze pro Monat',
       'hero.title': 'Eine strukturierte, bewährte Methode für ein zweites Einkommen.',
       'hero.lead': 'Einmal gelernt, braucht die tägliche Verwaltung nur wenige Minuten — gemacht für ein ohnehin volles Leben, nicht um es zu ersetzen.',
@@ -801,26 +585,12 @@
       'form.err_nome': 'Gib deinen Vornamen ein.', 'form.err_cognome': 'Gib deinen Nachnamen ein.',
       'form.err_email_req': 'Gib deine E-Mail ein.', 'form.err_email_bad': 'Ungültige E-Mail (z. B. name@domain.de).',
       'form.err_tel_req': 'Gib deine Nummer ein.', 'form.err_tel_bad': 'Ungültige Nummer: Verwende die internationale Vorwahl, z. B. +49 151 23456789.',
-      'calc.eyebrow': 'Kostenloses Tool', 'calc.title': 'CORE-54 Rechner',
-      'calc.lead': 'Gib die Daten der Prop ein, an der du arbeitest: Du erhältst sofort die SL- und TP-Werte für Core54 und siehst, wie sich der Broker-Saldo in beiden Szenarien ändert.',
-      'calc.g1t': 'Deine Prop', 'calc.g1p': 'Parameter der Challenge',
-      'calc.balance': 'Startkapital', 'calc.dd': 'Maximaler Drawdown',
-      'calc.incasso': 'Ertrag bei verlorener Prop', 'calc.incasso_tip': 'Wie viel der Broker einnimmt, wenn die Prop den maximalen Drawdown erreicht.',
-      'calc.g2t': 'Salden der Prop', 'calc.g2p': 'Wo du jetzt stehst und wo du bei TP oder SL landest',
-      'calc.saldo': 'Aktueller Saldo', 'calc.tp': 'Saldo bei TP', 'calc.sl': 'Saldo bei SL',
-      'calc.reset': '↺ Beispielwerte wiederherstellen',
-      'calc.out_title': 'In Core54 einstellen', 'calc.loss': 'Prop-Verlust', 'calc.gain': 'Prop-Gewinn',
-      'calc.rr': 'Chance-Risiko-Verhältnis', 'calc.rr_sub': 'Verlust bei SL : Gewinn bei TP',
-      'calc.broker_title': 'Auswirkung auf das Broker-Konto',
-      'calc.if_sl': 'Wenn die Prop SL erreicht', 'calc.if_tp': 'Wenn die Prop TP erreicht', 'calc.delta_sub': 'Nettoveränderung des Broker-Saldos',
-      'calc.cta_text': 'Soll CORE-54 das alles automatisch für dich erledigen?', 'calc.cta_btn': 'Zugang beantragen',
       'footer.disclaimer': '<strong>Hinweis.</strong> CORE-54 ist ein Software-Tool, das unter einer Nutzungslizenz bereitgestellt wird; es ist weder ein Finanzintermediär noch eine Bank, eine Wertpapierfirma oder ein Finanzberater und erbringt weder persönliche Anlageberatung noch Vermögensverwaltung. Der Handel mit Hebel ist mit einem hohen Risiko verbunden, einschließlich der Möglichkeit, das eingesetzte Kapital zu verlieren; vergangene Ergebnisse oder Simulationen sind keine Garantie für zukünftige Ergebnisse. Konten und Gelder bleiben stets im ausschließlichen Eigentum des Nutzers, der allein für die ausgeführten Geschäfte verantwortlich ist.'
     },
     es: {
       'meta.title': 'CORE-54 — Acceso anticipado',
       'meta.desc': 'CORE-54: un método estructurado para construir un segundo ingreso, con la seriedad de un negocio real. Mira las primeras lecciones gratuitas y solicita el acceso anticipado.',
       'nav.how': 'Cómo funciona', 'nav.video': 'Lecciones gratis', 'nav.prices': 'Precios', 'nav.access': 'Acceso',
-      'view.service': 'Servicio', 'view.calc': 'Calculadora',
       'hero.eyebrow': 'Plazas limitadas cada mes',
       'hero.title': 'Un método estructurado y probado para construir un segundo ingreso.',
       'hero.lead': 'Una vez aprendido, la gestión diaria solo requiere unos minutos — pensado para encajar en una vida ya llena de compromisos, no para sustituirla.',
@@ -871,26 +641,12 @@
       'form.err_nome': 'Introduce tu nombre.', 'form.err_cognome': 'Introduce tu apellido.',
       'form.err_email_req': 'Introduce tu email.', 'form.err_email_bad': 'Email no válido (p. ej. nombre@dominio.es).',
       'form.err_tel_req': 'Introduce tu número.', 'form.err_tel_bad': 'Número no válido: usa el prefijo internacional, p. ej. +34 612 345 678.',
-      'calc.eyebrow': 'Herramienta gratuita', 'calc.title': 'Calculadora CORE-54',
-      'calc.lead': 'Introduce los datos de la prop con la que trabajas: obtén al instante los valores de SL y TP para configurar en Core54 y mira cómo cambia el saldo del bróker en ambos escenarios.',
-      'calc.g1t': 'Tu prop', 'calc.g1p': 'Parámetros del desafío',
-      'calc.balance': 'Balance inicial', 'calc.dd': 'Drawdown máximo',
-      'calc.incasso': 'Cobro si la prop se quema', 'calc.incasso_tip': 'Cuánto cobra el bróker si la prop llega al drawdown máximo.',
-      'calc.g2t': 'Saldos de la prop', 'calc.g2p': 'Dónde estás ahora y dónde llegas en TP o SL',
-      'calc.saldo': 'Saldo actual', 'calc.tp': 'Saldo en TP', 'calc.sl': 'Saldo en SL',
-      'calc.reset': '↺ Restablecer valores de ejemplo',
-      'calc.out_title': 'Configurar en Core54', 'calc.loss': 'Pérdida prop', 'calc.gain': 'Ganancia prop',
-      'calc.rr': 'Relación riesgo/beneficio', 'calc.rr_sub': 'Pérdida en SL : ganancia en TP',
-      'calc.broker_title': 'Efecto en la cuenta del bróker',
-      'calc.if_sl': 'Si la prop llega a SL', 'calc.if_tp': 'Si la prop llega a TP', 'calc.delta_sub': 'variación neta del saldo del bróker',
-      'calc.cta_text': '¿Quieres que CORE-54 lo gestione todo automáticamente?', 'calc.cta_btn': 'Solicita el acceso',
       'footer.disclaimer': '<strong>Advertencia.</strong> CORE-54 es una herramienta de software cedida bajo licencia de uso; no es un intermediario financiero, un banco, una empresa de servicios de inversión ni un asesor financiero, y no presta asesoramiento personalizado ni gestión de carteras. El trading con apalancamiento conlleva un riesgo elevado, incluida la posibilidad de perder el capital invertido; los resultados pasados o las simulaciones no garantizan resultados futuros. Las cuentas y los fondos siguen siendo siempre de titularidad exclusiva del usuario, que es el único responsable de las operaciones ejecutadas.'
     },
     pl: {
       'meta.title': 'CORE-54 — Wczesny dostęp',
       'meta.desc': 'CORE-54: uporządkowana metoda budowania drugiego źródła dochodu, z powagą prawdziwego biznesu. Obejrzyj pierwsze darmowe lekcje i poproś o wczesny dostęp.',
       'nav.how': 'Jak to działa', 'nav.video': 'Darmowe lekcje', 'nav.prices': 'Cennik', 'nav.access': 'Dostęp',
-      'view.service': 'Usługa', 'view.calc': 'Kalkulator',
       'hero.eyebrow': 'Ograniczona liczba miejsc co miesiąc',
       'hero.title': 'Uporządkowana, sprawdzona metoda budowania drugiego źródła dochodu.',
       'hero.lead': 'Gdy ją opanujesz, codzienna obsługa zajmuje tylko kilka minut — stworzona, by zmieścić się w już pełnym obowiązków życiu, a nie je zastąpić.',
@@ -941,23 +697,9 @@
       'form.err_nome': 'Podaj swoje imię.', 'form.err_cognome': 'Podaj swoje nazwisko.',
       'form.err_email_req': 'Podaj swój e-mail.', 'form.err_email_bad': 'Nieprawidłowy e-mail (np. imie@domena.pl).',
       'form.err_tel_req': 'Podaj swój numer.', 'form.err_tel_bad': 'Nieprawidłowy numer: użyj numeru kierunkowego kraju, np. +48 512 345 678.',
-      'calc.eyebrow': 'Darmowe narzędzie', 'calc.title': 'Kalkulator CORE-54',
-      'calc.lead': 'Wpisz dane propa, nad którym pracujesz: od razu otrzymasz wartości SL i TP do ustawienia w Core54 i zobaczysz, jak zmienia się saldo u brokera w obu scenariuszach.',
-      'calc.g1t': 'Twój prop', 'calc.g1p': 'Parametry wyzwania',
-      'calc.balance': 'Saldo początkowe', 'calc.dd': 'Maksymalny drawdown',
-      'calc.incasso': 'Wpływ przy spalonym propie', 'calc.incasso_tip': 'Ile zarabia broker, gdy prop osiągnie maksymalny drawdown.',
-      'calc.g2t': 'Salda propa', 'calc.g2p': 'Gdzie jesteś teraz i gdzie dojdziesz przy TP lub SL',
-      'calc.saldo': 'Saldo bieżące', 'calc.tp': 'Saldo przy TP', 'calc.sl': 'Saldo przy SL',
-      'calc.reset': '↺ Przywróć przykładowe wartości',
-      'calc.out_title': 'Do ustawienia w Core54', 'calc.loss': 'Strata propa', 'calc.gain': 'Zysk propa',
-      'calc.rr': 'Stosunek ryzyka do zysku', 'calc.rr_sub': 'Strata przy SL : zysk przy TP',
-      'calc.broker_title': 'Wpływ na konto u brokera',
-      'calc.if_sl': 'Gdy prop dojdzie do SL', 'calc.if_tp': 'Gdy prop dojdzie do TP', 'calc.delta_sub': 'zmiana netto salda u brokera',
-      'calc.cta_text': 'Chcesz, żeby CORE-54 robił to wszystko automatycznie?', 'calc.cta_btn': 'Poproś o dostęp',
       'footer.disclaimer': '<strong>Zastrzeżenie.</strong> CORE-54 to narzędzie programowe udostępniane na podstawie licencji; nie jest pośrednikiem finansowym, bankiem, firmą inwestycyjną ani doradcą finansowym i nie świadczy doradztwa indywidualnego ani zarządzania portfelem. Handel z dźwignią wiąże się z wysokim ryzykiem, w tym możliwością utraty zainwestowanego kapitału; wyniki historyczne lub symulacje nie gwarantują przyszłych wyników. Konta i środki zawsze pozostają wyłączną własnością użytkownika, który ponosi wyłączną odpowiedzialność za wykonane transakcje.'
     }
   };
-  var LOCALE = { it: 'it-IT', en: 'en-US', de: 'de-DE', es: 'es-ES', pl: 'pl-PL' };
 
 
   // ═══ LINGUA ═══
@@ -979,7 +721,6 @@
     $('lang-select').value = lang;
     try { localStorage.setItem('core54_lang', lang); } catch(e) {}
     // rinfresca errori/valori già mostrati nella nuova lingua
-    if (typeof calcola === 'function') calcola();
     if (accessMsg.className === 'form-msg ok') accessMsg.innerHTML = t('form.ok');
     if (accessMsg.className === 'form-msg err' && LANGS.some(function(l){ return I18N[l]['form.err_fields'] === accessMsg.textContent; })) accessMsg.textContent = t('form.err_fields');
     ['nome','cognome','email','telefono'].forEach(function(id){ if ($('err-' + id).classList.contains('show')) validaCampi(leggiPayload()); });
@@ -1112,103 +853,12 @@
     });
   });
 
-  // ═══ SCHEDE: #calcolatore apre il calcolatore, qualunque altro hash resta sul Servizio ═══
-  var viewServizio = $('view-servizio'), viewCalc = $('view-calcolatore');
-  var lastIsCalc = null, firstRun = true;
-  function route(){
-    var isCalc = location.hash === '#calcolatore';
-    viewServizio.hidden = isCalc;
-    viewCalc.hidden = !isCalc;
-    document.querySelectorAll('.view-switch a').forEach(function(a){
-      a.classList.toggle('on', (a.getAttribute('data-view') === 'calcolatore') === isCalc);
-    });
-    $('main-nav').style.visibility = isCalc ? 'hidden' : 'visible';
-    // Ancora interna alla stessa scheda: ci pensa il browser (scroll morbido).
-    // Cambio di scheda: salto istantaneo, eseguito dopo il cambio di layout.
-    var changed = isCalc !== lastIsCalc;
-    lastIsCalc = isCalc;
-    if (!changed && !firstRun && location.hash !== '#servizio') return;
-    firstRun = false;
-    var target = !isCalc && location.hash.length > 1 ? document.getElementById(location.hash.slice(1)) : null;
-    requestAnimationFrame(function(){
-      if (target) target.scrollIntoView({ behavior: 'instant' });
-      else window.scrollTo({ top: 0, behavior: changed ? 'instant' : 'smooth' });
-    });
-  }
-  window.addEventListener('hashchange', route);
-
-  // ═══ CALCOLATORE ═══
-  var num = function(v){ return parseFloat(v) || 0; };
-  // Separatori per lingua (migliaia / decimali) — fissi, per avere sempre il raggruppamento anche sotto 10.000
-  var SEP = { it: ['.', ','], de: ['.', ','], es: ['.', ','], en: [',', '.'], pl: [' ', ','] };
-  function fmtNum(n, dec){
-    var sep = SEP[lang] || SEP.it;
-    var parts = Math.abs(n).toFixed(dec).split('.');
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, sep[0]);
-    return dec > 0 ? parts[0] + sep[1] + parts[1] : parts[0];
-  }
-  function fmt(n){
-    if (n === null || n === undefined || isNaN(n)) return '—';
-    var s = '$' + fmtNum(n, 2);
-    return (n < 0 && Number(Math.abs(n).toFixed(2)) !== 0) ? '−' + s : s;
-  }
-  function fmt0(n){ return (n < 0 ? '−' : '') + '$' + fmtNum(Math.round(n), 0); }
-  function fmtDelta(v){ return (v >= 0 ? '+' : '−') + fmt(Math.abs(v)); }
-
-  var ids = ['c-balance','c-dd','c-incasso','c-saldo','c-sl','c-tp'];
-
-  function calcola(){
-    var balance = num($('c-balance').value);
-    var dd      = num($('c-dd').value) / 100;
-    var incasso = num($('c-incasso').value);
-    var saldo   = num($('c-saldo').value);
-    var tpVal   = num($('c-tp').value);
-    var slVal   = num($('c-sl').value);
-    var ddVal   = balance * dd;
-
-    // Valori da impostare su Core54
-    var perditaSL  = saldo - slVal;
-    var guadagnoTP = tpVal - saldo;
-
-    // Variazioni saldo broker: l'incasso al DD max scala in proporzione al movimento della prop.
-    // Corrisponde alla formula originale con costo accumulato = 0 e payout = 0 (entrambi rimossi su richiesta).
-    var ratio   = ddVal !== 0 ? incasso / ddVal : 0;
-    var deltaSL = ratio * perditaSL;
-    var deltaTP = -ratio * guadagnoTP;
-
-    $('o-perdita').textContent = fmt(perditaSL);
-    $('o-guadagno').textContent = fmt(guadagnoTP);
-    $('o-dsl').textContent = fmtDelta(deltaSL);
-    $('o-dtp').textContent = fmtDelta(deltaTP);
-    $('o-dsl-box').className = 'calc-row ' + (deltaSL >= 0 ? 'pos' : 'neg');
-    $('o-dtp-box').className = 'calc-row ' + (deltaTP >= 0 ? 'pos' : 'neg');
-
-    // Rapporto rischio/rendimento = 1 : (guadagno a TP / perdita a SL)
-    $('o-rr').textContent = (perditaSL > 0 && guadagnoTP > 0) ? '1 : ' + fmtNum(guadagnoTP / perditaSL, 2) : '—';
-
-    // Barra divisa: segmento rosso = distanza dallo SL, verde = distanza dal TP
-    var dSl = Math.max(0, perditaSL), dTp = Math.max(0, guadagnoTP), tot = dSl + dTp;
-    $('o-seg-sl').style.flexGrow = tot > 0 ? dSl : 1;
-    $('o-seg-tp').style.flexGrow = tot > 0 ? dTp : 1;
-    $('o-sl-lbl').textContent = fmt0(slVal);
-    $('o-saldo-lbl').textContent = fmt0(saldo);
-    $('o-tp-lbl').textContent = fmt0(tpVal);
-  }
-
-  ids.forEach(function(id){ $(id).addEventListener('input', calcola); });
-  $('c-reset').addEventListener('click', function(){
-    ids.forEach(function(id){ $(id).value = $(id).getAttribute('data-def'); });
-    calcola();
-  });
-  ids.forEach(function(id){ $(id).value = $(id).getAttribute('data-def'); });
-
   // ═══ AVVIO ═══
   var saved = null;
   try { saved = localStorage.getItem('core54_lang'); } catch(e) {}
   var nav = (navigator.language || 'it').slice(0, 2).toLowerCase();
   $('lang-select').addEventListener('change', function(){ applyLang(this.value); });
   applyLang(saved || (LANGS.indexOf(nav) >= 0 ? nav : 'it'));
-  route();
 })();
 </script>
 
